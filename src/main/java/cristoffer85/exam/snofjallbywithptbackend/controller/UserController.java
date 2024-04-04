@@ -21,7 +21,6 @@ public class UserController {
 
     @PostMapping("/createUser")
     public User createUser(@RequestBody User user) {
-        user.setMaxHoursSlept(user.getMaxHoursSlept());
         return userRepository.save(user);
     }
 

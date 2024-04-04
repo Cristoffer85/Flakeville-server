@@ -10,10 +10,9 @@ import lombok.NoArgsConstructor;
 public class RegistrationDTO {          // Class that Registers the username and password as Data-Transfer-Object, to a String
     private String username;
     private String password;
-    private int maxHoursSlept;
 
     @Override
     public String toString() {
-        return "Registration info: Username: " + this.username + " Password: " + this.password + " Max Hours slept: " + this.maxHoursSlept;
+        return "Registration info: Username: " + this.username + " Password: " + this.password;
     }
 }

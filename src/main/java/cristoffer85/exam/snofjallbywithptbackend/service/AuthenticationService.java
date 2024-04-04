@@ -4,6 +4,7 @@ import cristoffer85.exam.snofjallbywithptbackend.DTO.LoginResponseDTO;
 import cristoffer85.exam.snofjallbywithptbackend.model.Employee;
 import cristoffer85.exam.snofjallbywithptbackend.model.Role;
 import cristoffer85.exam.snofjallbywithptbackend.model.User;
+import cristoffer85.exam.snofjallbywithptbackend.repository.AdminRepository;
 import cristoffer85.exam.snofjallbywithptbackend.repository.EmployeeRepository;
 import cristoffer85.exam.snofjallbywithptbackend.repository.RoleRepository;
 import cristoffer85.exam.snofjallbywithptbackend.repository.UserRepository;
@@ -30,6 +31,9 @@ public class AuthenticationService {                // Class that handles Regist
     private UserRepository userRepository;
 
     @Autowired
+    private AdminRepository adminRepository;
+
+    @Autowired
     private RoleRepository roleRepository;
 
     @Autowired
@@ -44,7 +48,7 @@ public class AuthenticationService {                // Class that handles Regist
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    public User registerUser(String username, String password, int maxHoursSlept) {
+    public User registerUser(String username, String password) {
         try {
             String encodedPassword = passwordEncoder.encode(password);
             Role userRole = roleRepository.findByAuthority("USER")
@@ -57,7 +61,6 @@ public class AuthenticationService {                // Class that handles Regist
             newUser.setUsername(username);
             newUser.setPassword(encodedPassword);
             newUser.setAuthorities(authorities);
-            newUser.setMaxHoursSlept(maxHoursSlept);
 
             // Generate a unique userId (you can use UUID for this)
             String userId = UUID.randomUUID().toString();
@@ -101,7 +104,12 @@ public class AuthenticationService {                // Class that handles Regist
 
             String token = tokenService.generateJwt(auth);
 
-            return new LoginResponseDTO(userRepository.findByUsername(username).get(), token);
+            User user = userRepository.findByUsername(username)
+                    .orElseGet(() -> adminRepository.findByUsername(username)
+                            .map(admin -> (User) admin)
+                            .orElse(null));
+
+            return new LoginResponseDTO(user, token);
         } catch (BadCredentialsException e) {
             // Handle bad credentials exception
             return new LoginResponseDTO(null, "Incorrect Credentials");

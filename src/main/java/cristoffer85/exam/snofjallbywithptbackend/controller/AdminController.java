@@ -1,19 +1,15 @@
 package cristoffer85.exam.snofjallbywithptbackend.controller;
 
 import cristoffer85.exam.snofjallbywithptbackend.model.Employee;
-import cristoffer85.exam.snofjallbywithptbackend.model.Role;
 import cristoffer85.exam.snofjallbywithptbackend.model.User;
 import cristoffer85.exam.snofjallbywithptbackend.repository.EmployeeRepository;
 import cristoffer85.exam.snofjallbywithptbackend.repository.RoleRepository;
 import cristoffer85.exam.snofjallbywithptbackend.repository.UserRepository;
 import cristoffer85.exam.snofjallbywithptbackend.service.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/admin")
@@ -51,7 +47,6 @@ public class AdminController {
 
     @PostMapping("/createUser")
     public User createUser(@RequestBody User user) {
-        user.setMaxHoursSlept(user.getMaxHoursSlept());
         return userRepository.save(user);
     }
 
@@ -63,7 +58,6 @@ public class AdminController {
             existingUser.setUsername(user.getUsername());
             existingUser.setPassword(user.getPassword());
             existingUser.setAuthorities(user.getAuthorities());
-            existingUser.setMaxHoursSlept(user.getMaxHoursSlept());
 
             return userRepository.save(existingUser);
         }
