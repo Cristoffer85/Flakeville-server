@@ -1,9 +1,10 @@
 package cristoffer85.exam.snofjallbywithptbackend.service;
 
 import cristoffer85.exam.snofjallbywithptbackend.DTO.LoginResponseDTO;
+import cristoffer85.exam.snofjallbywithptbackend.model.Employee;
 import cristoffer85.exam.snofjallbywithptbackend.model.Role;
 import cristoffer85.exam.snofjallbywithptbackend.model.User;
-import cristoffer85.exam.snofjallbywithptbackend.model.WeekDay;
+import cristoffer85.exam.snofjallbywithptbackend.repository.EmployeeRepository;
 import cristoffer85.exam.snofjallbywithptbackend.repository.RoleRepository;
 import cristoffer85.exam.snofjallbywithptbackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,10 @@ public class AuthenticationService {                // Class that handles Regist
     @Autowired
     private TokenService tokenService;
 
-    public User registerUser(String username, String password, int maxHoursSlept, WeekDay weekDay) {
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    public User registerUser(String username, String password, int maxHoursSlept) {
         try {
             String encodedPassword = passwordEncoder.encode(password);
             Role userRole = roleRepository.findByAuthority("USER")
@@ -54,13 +58,36 @@ public class AuthenticationService {                // Class that handles Regist
             newUser.setPassword(encodedPassword);
             newUser.setAuthorities(authorities);
             newUser.setMaxHoursSlept(maxHoursSlept);
-            newUser.setWeekDay(weekDay);
 
             // Generate a unique userId (you can use UUID for this)
             String userId = UUID.randomUUID().toString();
             newUser.setUserId(userId);
 
             return userRepository.save(newUser);
+
+        } catch (DataIntegrityViolationException e) {
+            // Catch the exception thrown when there's a unique constraint violation
+            throw new RuntimeException("Username '" + username + "' already exists. Please choose a different username.");
+        }
+    }
+
+    public Employee registerEmployee(String name, String position, String username, String password) {
+        try {
+            String encodedPassword = passwordEncoder.encode(password);
+            Role employeeRole = roleRepository.findByAuthority("EMPLOYEE")
+                    .orElseThrow(() -> new RuntimeException("EMPLOYEE role not found"));
+
+            Set<Role> authorities = new HashSet<>();
+            authorities.add(employeeRole);
+
+            Employee newEmployee = new Employee();
+            newEmployee.setName(name);
+            newEmployee.setPosition(position);
+            newEmployee.setUsername(username);
+            newEmployee.setPassword(encodedPassword);
+            newEmployee.setAuthorities(authorities);
+
+            return employeeRepository.save(newEmployee);
 
         } catch (DataIntegrityViolationException e) {
             // Catch the exception thrown when there's a unique constraint violation

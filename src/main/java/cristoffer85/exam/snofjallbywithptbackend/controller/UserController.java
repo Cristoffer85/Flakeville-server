@@ -19,6 +19,12 @@ public class UserController {
         return "User access level";
     }
 
+    @PostMapping("/createUser")
+    public User createUser(@RequestBody User user) {
+        user.setMaxHoursSlept(user.getMaxHoursSlept());
+        return userRepository.save(user);
+    }
+
     @GetMapping("/getAllUsers")
     public List<User> getAllUsers() {
         return userRepository.findAll();

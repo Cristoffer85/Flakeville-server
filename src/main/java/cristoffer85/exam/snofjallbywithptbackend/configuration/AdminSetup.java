@@ -2,7 +2,6 @@ package cristoffer85.exam.snofjallbywithptbackend.configuration;
 
 import cristoffer85.exam.snofjallbywithptbackend.model.Role;
 import cristoffer85.exam.snofjallbywithptbackend.model.User;
-import cristoffer85.exam.snofjallbywithptbackend.model.WeekDay;
 import cristoffer85.exam.snofjallbywithptbackend.repository.RoleRepository;
 import cristoffer85.exam.snofjallbywithptbackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Component
-public class AdminSetup {
+public class AdminSetup {               // Class to mainly set up the admins = below in the method initializeAdminUser()
 
     @Autowired
     private RoleRepository roleRepository;
@@ -35,9 +34,11 @@ public class AdminSetup {
         if (roleRepository.findByAuthority("ADMIN").isEmpty()) {
             roleRepository.save(new Role(1, "ADMIN"));
         }
-
         if (roleRepository.findByAuthority("USER").isEmpty()) {
             roleRepository.save(new Role(2, "USER"));
+        }
+        if (roleRepository.findByAuthority("EMPLOYEE").isEmpty()) {
+            roleRepository.save(new Role(3, "EMPLOYEE"));
         }
     }
 
@@ -53,8 +54,6 @@ public class AdminSetup {
             admin.setUsername("admin");
             admin.setPassword(passwordEncoder.encode("superadminpassword"));
             admin.setAuthorities(roles);
-            admin.setMaxHoursSlept(8);
-            admin.setWeekDay(WeekDay.MONDAY);
             userRepository.save(admin);
             //----------------------------------
 
@@ -64,8 +63,6 @@ public class AdminSetup {
             admin2.setUsername("admin2");
             admin2.setPassword(passwordEncoder.encode("superadminpassword2"));
             admin2.setAuthorities(roles);
-            admin2.setMaxHoursSlept(7);
-            admin2.setWeekDay(WeekDay.MONDAY);
             userRepository.save(admin2);
             //----------------------------------
         }

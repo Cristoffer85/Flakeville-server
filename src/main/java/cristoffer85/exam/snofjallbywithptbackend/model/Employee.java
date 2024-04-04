@@ -11,31 +11,21 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Data
-@Document(collection = "users")
-public class User implements UserDetails {
+@Document(collection = "employees")
+public class Employee implements UserDetails {
 
     @Id
-    private String userId;
+    private String id;
+    private String name;
+    private String position;
 
     @Indexed(unique = true)
     private String username;
     private String password;
-    private int maxHoursSlept = 0;
 
     private Set<Role> authorities = new HashSet<>();
 
-    public User() {
-        super();
-    }
-
-    public User(String userId, String username, String password, Set<Role> authorities, int maxHoursSlept) {
-        super();
-        this.userId = userId;
-        this.username = username;
-        this.password = password;
-        this.authorities = authorities;
-        this.maxHoursSlept = maxHoursSlept;
-    }
+    // other fields as needed
 
     @Override
     @JsonIgnore
@@ -63,15 +53,14 @@ public class User implements UserDetails {
         return true;
     }
 
-
-    // 2 extra methods, to view only (in the UI) the authority of the user. Not the whole hashset with the customgenerated Mongo-Db value. Thought that was unnecessary.
     @Override
     public String toString() {
-        return "User{" +
-                "userId='" + userId + '\'' +
+        return "Employee{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", position='" + position + '\'' +
                 ", username='" + username + '\'' +
                 ", authorities=" + getAuthorityStrings() +
-                ", maxHoursSlept=" + maxHoursSlept +
                 '}';
     }
 
@@ -86,4 +75,5 @@ public class User implements UserDetails {
         result.append("]");
         return result.toString();
     }
+
 }

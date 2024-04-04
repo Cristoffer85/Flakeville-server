@@ -26,7 +26,7 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtGra
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-public class SecurityConfiguration {                    // Sec. config with and through http:// etc.
+public class SecurityConfiguration {                    // Class responsible for the security of the application
 
     private final RSAKeyProperties keys;
 
@@ -51,10 +51,18 @@ public class SecurityConfiguration {                    // Sec. config with and 
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
                 .csrf(csrf -> csrf.disable())
+
+                // Chain below authorities structured, so that:
+
+                // Admin = ADMIN, EMPLOYEE, USER
+                // Employee = EMPLOYEE, USER
+                // User = USER
+
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/auth/**").permitAll();
-                    auth.requestMatchers("/admin/**").hasRole("ADMIN");
-                    auth.requestMatchers("/user/**").hasAnyRole("ADMIN", "USER");
+                    auth.requestMatchers("/admin/**").hasAnyRole("ADMIN", "EMPLOYEE", "USER");
+                    auth.requestMatchers("/employee/**").hasAnyRole("EMPLOYEE", "USER");    // Clearance for later adding specific employee controller class with endpoints (not implemented now)
+                    auth.requestMatchers("/user/**").hasRole("USER");
                     auth.anyRequest().authenticated();
                 });
 
