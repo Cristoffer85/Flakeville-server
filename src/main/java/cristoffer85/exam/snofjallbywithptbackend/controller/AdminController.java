@@ -3,7 +3,6 @@ package cristoffer85.exam.snofjallbywithptbackend.controller;
 import cristoffer85.exam.snofjallbywithptbackend.model.Employee;
 import cristoffer85.exam.snofjallbywithptbackend.model.User;
 import cristoffer85.exam.snofjallbywithptbackend.repository.EmployeeRepository;
-import cristoffer85.exam.snofjallbywithptbackend.repository.RoleRepository;
 import cristoffer85.exam.snofjallbywithptbackend.repository.UserRepository;
 import cristoffer85.exam.snofjallbywithptbackend.service.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;

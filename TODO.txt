@@ -1,6 +1,15 @@
+TODO:
+* Make a ground-scheme/planning to check over what variables shall be stored in the database, for each role
+* Plan out what data (and how) shall be taken from the weather API, and how it shall be viewed
+
+* Write tests for all classes.. (available and doable Controllers and Services = done)
+
+
+
+
+DONE:
 * Implement good Weather (Snow, mostly) API in backend
  - Super-awesome (free, as well) API found at https://rapidapi.com/joeykyber/api/ski-resort-forecast
 
-* Make a ground-scheme/planning to check over what variables shall be stored in the database, for each role
-
-*
+* 3 Roles, Admin, Employee and User implemented and working through security
+* Good MongoDB Database Structure implemented

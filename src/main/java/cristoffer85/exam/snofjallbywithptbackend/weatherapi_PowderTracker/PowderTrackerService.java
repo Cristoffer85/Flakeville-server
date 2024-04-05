@@ -25,6 +25,7 @@ public class PowderTrackerService {
                 .build();
 
         Response response = client.newCall(request).execute();
+        assert response.body() != null;
         return response.body().string();
     }
 
@@ -37,6 +38,7 @@ public class PowderTrackerService {
                 .build();
 
         Response response = client.newCall(request).execute();
+        assert response.body() != null;
         return response.body().string();
     }
 
@@ -49,6 +51,7 @@ public class PowderTrackerService {
                 .build();
 
         Response response = client.newCall(request).execute();
+        assert response.body() != null;
         return response.body().string();
     }
 }

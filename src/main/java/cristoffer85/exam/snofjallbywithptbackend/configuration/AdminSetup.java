@@ -2,10 +2,8 @@ package cristoffer85.exam.snofjallbywithptbackend.configuration;
 
 import cristoffer85.exam.snofjallbywithptbackend.model.Admin;
 import cristoffer85.exam.snofjallbywithptbackend.model.Role;
-import cristoffer85.exam.snofjallbywithptbackend.model.User;
 import cristoffer85.exam.snofjallbywithptbackend.repository.AdminRepository;
 import cristoffer85.exam.snofjallbywithptbackend.repository.RoleRepository;
-import cristoffer85.exam.snofjallbywithptbackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -19,9 +17,6 @@ public class AdminSetup {               // Class to mainly set up the admins = b
 
     @Autowired
     private RoleRepository roleRepository;
-
-    @Autowired
-    private UserRepository userRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
