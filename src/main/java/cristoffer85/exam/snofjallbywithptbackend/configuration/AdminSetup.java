@@ -39,11 +39,11 @@ public class AdminSetup {               // Class to mainly set up the admins = b
         if (roleRepository.findByAuthority("ADMIN").isEmpty()) {
             roleRepository.save(new Role(1, "ADMIN"));
         }
-        if (roleRepository.findByAuthority("USER").isEmpty()) {
-            roleRepository.save(new Role(2, "USER"));
-        }
         if (roleRepository.findByAuthority("EMPLOYEE").isEmpty()) {
-            roleRepository.save(new Role(3, "EMPLOYEE"));
+            roleRepository.save(new Role(2, "EMPLOYEE"));
+        }
+        if (roleRepository.findByAuthority("USER").isEmpty()) {
+            roleRepository.save(new Role(3, "USER"));
         }
     }
 

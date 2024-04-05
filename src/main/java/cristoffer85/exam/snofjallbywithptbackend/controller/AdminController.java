@@ -25,9 +25,6 @@ public class AdminController {
     @Autowired
     private AuthenticationService authenticationService;
 
-    @Autowired
-    private RoleRepository roleRepository;
-
     @GetMapping("/")
     public String helloAdminController() {
         return "Admin level access";
@@ -45,11 +42,6 @@ public class AdminController {
         return userRepository.findByUsername(username).orElse(null);
     }
 
-    @PostMapping("/createUser")
-    public User createUser(@RequestBody User user) {
-        return userRepository.save(user);
-    }
-
     @PutMapping("/updateUser/{username}")
     public User updateUser(@PathVariable String username, @RequestBody User user) {
         User existingUser = userRepository.findByUsername(username).orElse(null);
@@ -57,7 +49,6 @@ public class AdminController {
 
             existingUser.setUsername(user.getUsername());
             existingUser.setPassword(user.getPassword());
-            existingUser.setAuthorities(user.getAuthorities());
 
             return userRepository.save(existingUser);
         }
@@ -78,9 +69,9 @@ public class AdminController {
         return employeeRepository.findAll();
     }
 
-    @GetMapping("/getOneEmployee/{id}")
-    public Employee getOneEmployee(@PathVariable String id) {
-        return employeeRepository.findById(id).orElse(null);
+    @GetMapping("/getOneEmployee/{username}")
+    public Employee getOneEmployee(@PathVariable String username) {
+        return employeeRepository.findByUsername(username).orElse(null);
     }
 
     @PostMapping("/createEmployee")
@@ -93,22 +84,23 @@ public class AdminController {
         );
     }
 
-    @PutMapping("/updateEmployee/{id}")
-    public Employee updateEmployee(@PathVariable String id, @RequestBody Employee employeeDetails) {
-        Employee employee = employeeRepository.findById(id).orElse(null);
+    @PutMapping("/updateEmployee/{username}")
+    public Employee updateEmployee(@PathVariable String username, @RequestBody Employee employeeDetails) {
+        Employee employee = employeeRepository.findByUsername(username).orElse(null);
         if (employee != null) {
-
             employee.setName(employeeDetails.getName());
             employee.setPosition(employeeDetails.getPosition());
-
-            return employeeRepository.save(employee);
+            Employee updatedEmployee = employeeRepository.save(employee);
+            return updatedEmployee;
         }
         return null;
     }
 
-    @DeleteMapping("/deleteEmployee/{id}")
-    public void deleteEmployee(@PathVariable String id) {
-        employeeRepository.deleteById(id);
+    @DeleteMapping("/deleteEmployee/{username}")
+    public void deleteEmployee(@PathVariable String username) {
+        Employee employee = employeeRepository.findByUsername(username).orElse(null);
+        if (employee != null) {
+            employeeRepository.delete(employee);
+        }
     }
-
 }
