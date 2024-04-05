@@ -1,4 +1,6 @@
 * Implement good Weather (Snow, mostly) API in backend
+ - Super-awesome (free, as well) API found at https://rapidapi.com/joeykyber/api/ski-resort-forecast
+
 * Make a ground-scheme/planning to check over what variables shall be stored in the database, for each role
 
 *

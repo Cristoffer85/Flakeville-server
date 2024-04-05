@@ -59,7 +59,7 @@ public class SecurityConfiguration {                    // Class responsible for
                 // User = USER
 
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/auth/**").permitAll();
+                    auth.requestMatchers("/auth/**", "/skiResort/**").permitAll();
                     auth.requestMatchers("/admin/**").hasAnyRole("ADMIN", "EMPLOYEE", "USER");
                     auth.requestMatchers("/employee/**").hasAnyRole("EMPLOYEE", "USER");    // Clearance for later adding specific employee controller class with endpoints (not implemented now)
                     auth.requestMatchers("/user/**").hasRole("USER");

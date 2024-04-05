@@ -1,0 +1,34 @@
+Current WeatherAPI (from RapidAPI) is from to https://rapidapi.com/joeykyber/api/ski-resort-forecast
+
+which right now is set to Lindvallen, Sweden (which is very close to home and child-heart for me)
+and in metrics and show both current, hourly (limited to one day) and a 5 day forecast.
+
+The API has responses etc like:
+
+forecast:[
+        {
+        summary:"light rain"
+        windSpeed:"35km/h"
+        windDirection:"SW"
+        snow:"0cm"
+        rain:"2.0mm"
+        maxTemp:"5°C"
+        minTemp:"5°C"
+        windChill:"-2°C"
+        humidity:"89%"
+        freezeLevel:"2000m"
+        }
+        ]
+
+basicInfo:{
+        region:"Sweden"
+        name:"Sälen"
+        url:"https://www.snow-forecast.com/resorts/Salen/6day/top"
+        topLiftElevation:"890m"
+        midLiftElevation:"620m"
+        botLiftElevation:"350m"
+        lat:"61.16"
+        lon:"13.27"
+        }
+
+(API is also totally free with no requestlimit so feel free to request on!)
