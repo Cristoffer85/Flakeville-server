@@ -2,6 +2,7 @@ package cristoffer85.exam.snofjallbywithptbackend.controller;
 
 import cristoffer85.exam.snofjallbywithptbackend.model.User;
 import cristoffer85.exam.snofjallbywithptbackend.repository.UserRepository;
+import cristoffer85.exam.snofjallbywithptbackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +14,8 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
+
     @GetMapping("/")
     public String helloUserController() {
         return "User access level";
@@ -21,10 +23,11 @@ public class UserController {
 
     @GetMapping("/getAllUsers")
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        return userService.getAllUsers();
     }
 
     @GetMapping("/getOneUser/{username}")
-    public User getOneUser(@PathVariable String username) { return userRepository.findByUsername(username).orElse(null);
+    public User getOneUser(@PathVariable String username) {
+        return userService.getUserByUsername(username);
     }
 }
