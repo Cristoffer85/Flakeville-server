@@ -1,6 +1,7 @@
 package cristoffer85.exam.snofjallbywithptbackend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -11,6 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Data
+@AllArgsConstructor
 @Document(collection = "users")
 public class User implements UserDetails {
 
@@ -25,14 +27,6 @@ public class User implements UserDetails {
 
     public User() {
         super();
-    }
-
-    public User(String userId, String username, String password, Set<Role> authorities) {
-        super();
-        this.userId = userId;
-        this.username = username;
-        this.password = password;
-        this.authorities = authorities;
     }
 
     @Override
@@ -59,28 +53,5 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-
-    // 2 extra methods, to view only (in the UI) the authority of the user. Not the whole hashset with the customgenerated Mongo-Db value. Thought that was unnecessary.
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId='" + userId + '\'' +
-                ", username='" + username + '\'' +
-                ", authorities=" + getAuthorityStrings() +
-                '}';
-    }
-
-    public String getAuthorityStrings() {
-        StringBuilder result = new StringBuilder("[");
-        for (Role role : authorities) {
-            result.append(role.getAuthority()).append(", ");
-        }
-        if (!authorities.isEmpty()) {
-            result.delete(result.length() - 2, result.length());
-        }
-        result.append("]");
-        return result.toString();
     }
 }

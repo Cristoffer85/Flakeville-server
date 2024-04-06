@@ -1,6 +1,5 @@
 package cristoffer85.exam.snofjallbywithptbackend.service;
 
-import cristoffer85.exam.snofjallbywithptbackend.model.User;
 import cristoffer85.exam.snofjallbywithptbackend.repository.AdminRepository;
 import cristoffer85.exam.snofjallbywithptbackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +19,11 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username)
-                .orElseGet(() -> adminRepository.findByUsername(username)
-                        .map(admin -> (User) admin)
-                        .orElseThrow(() -> new UsernameNotFoundException("User not found")));
 
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), user.getAuthorities());
+        return userRepository.findByUsername(username)
+                .map(user -> new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), user.getAuthorities()))
+                .orElseGet(() -> adminRepository.findByUsername(username)
+                        .map(admin -> new org.springframework.security.core.userdetails.User(admin.getUsername(), admin.getPassword(), admin.getAuthorities()))
+                        .orElseThrow(() -> new UsernameNotFoundException("User not found")));
     }
 }

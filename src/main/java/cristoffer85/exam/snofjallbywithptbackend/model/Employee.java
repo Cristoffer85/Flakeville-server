@@ -25,8 +25,6 @@ public class Employee implements UserDetails {
 
     private Set<Role> authorities = new HashSet<>();
 
-    // other fields as needed
-
     @Override
     @JsonIgnore
     public Set<Role> getAuthorities() {
@@ -52,28 +50,4 @@ public class Employee implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", position='" + position + '\'' +
-                ", username='" + username + '\'' +
-                ", authorities=" + getAuthorityStrings() +
-                '}';
-    }
-
-    public String getAuthorityStrings() {
-        StringBuilder result = new StringBuilder("[");
-        for (Role role : authorities) {
-            result.append(role.getAuthority()).append(", ");
-        }
-        if (!authorities.isEmpty()) {
-            result.delete(result.length() - 2, result.length());
-        }
-        result.append("]");
-        return result.toString();
-    }
-
 }

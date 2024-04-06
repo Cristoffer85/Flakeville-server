@@ -104,12 +104,16 @@ public class AuthenticationService {                // Class that handles Regist
 
             String token = tokenService.generateJwt(auth);
 
-            User user = userRepository.findByUsername(username)
-                    .orElseGet(() -> adminRepository.findByUsername(username)
-                            .map(admin -> (User) admin)
-                            .orElse(null));
+            Object userOrAdmin;
+            if (userRepository.findByUsername(username).isPresent()) {
+                userOrAdmin = userRepository.findByUsername(username).get();
+            } else if (adminRepository.findByUsername(username).isPresent()) {
+                userOrAdmin = adminRepository.findByUsername(username).get();
+            } else {
+                userOrAdmin = null;
+            }
 
-            return new LoginResponseDTO(user, token);
+            return new LoginResponseDTO(userOrAdmin, token);
         } catch (BadCredentialsException e) {
             // Handle bad credentials exception
             return new LoginResponseDTO(null, "Incorrect Credentials");
