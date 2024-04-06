@@ -18,7 +18,7 @@ public class UserService implements UserDetailsService {
     private AdminRepository adminRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {     // Method that handles exception to avoid nullpointer-crash by no user found
 
         return userRepository.findByUsername(username)
                 .map(user -> new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), user.getAuthorities()))
