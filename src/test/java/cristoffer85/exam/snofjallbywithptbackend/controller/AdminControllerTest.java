@@ -4,8 +4,6 @@ import cristoffer85.exam.snofjallbywithptbackend.model.Employee;
 import cristoffer85.exam.snofjallbywithptbackend.model.User;
 import cristoffer85.exam.snofjallbywithptbackend.repository.EmployeeRepository;
 import cristoffer85.exam.snofjallbywithptbackend.repository.UserRepository;
-import cristoffer85.exam.snofjallbywithptbackend.service.AuthenticationService;
-import cristoffer85.exam.snofjallbywithptbackend.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -20,12 +18,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class AdminControllerTest {
-
-    @Mock
-    private UserService userService;
-
-    @Mock
-    private AuthenticationService authenticationService;
 
     @Mock
     private EmployeeRepository employeeRepository;

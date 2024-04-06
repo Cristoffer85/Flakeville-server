@@ -54,15 +54,15 @@ public class SecurityConfiguration {                    // Class responsible for
 
                 // Chain below authorities structured, so that:
 
-                // Admin = ADMIN, EMPLOYEE, USER
-                // Employee = EMPLOYEE, USER
-                // User = USER
+                // 1. Admin    :   ADMIN, EMPLOYEE, USER authorities
+                // 2. Employee :   EMPLOYEE, USER authorities
+                // 3. User     :   USER authorities
 
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/auth/**", "/skiResort/**").permitAll();
-                    auth.requestMatchers("/admin/**").hasAnyRole("ADMIN", "EMPLOYEE", "USER");
-                    auth.requestMatchers("/employee/**").hasAnyRole("EMPLOYEE", "USER");    // Clearance for later adding specific employee controller class with endpoints (not implemented now)
-                    auth.requestMatchers("/user/**").hasRole("USER");
+                    auth.requestMatchers("/admin/**").hasRole("ADMIN");
+                    auth.requestMatchers("/employee/**").hasAnyRole("ADMIN", "EMPLOYEE");    // Clearance for later adding specific employee controller class with endpoints (not implemented now)
+                    auth.requestMatchers("/user/**").hasAnyRole("ADMIN", "EMPLOYEE", "USER");
                     auth.anyRequest().authenticated();
                 });
 

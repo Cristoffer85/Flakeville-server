@@ -16,13 +16,13 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class UserDetailsServiceImplTest {
+public class UserServiceTest {
 
     @Mock
     private UserRepository userRepository;
 
     @InjectMocks
-    private UserDetailsServiceImpl userDetailsService;
+    private UserService userDetailsService;
 
     @BeforeEach
     public void setup() {
