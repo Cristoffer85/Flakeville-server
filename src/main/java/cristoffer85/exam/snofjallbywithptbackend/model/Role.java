@@ -11,19 +11,9 @@ public class Role implements GrantedAuthority {
 
     @Id
     private String roleId;
-    private Integer customRoleId;
     private String authority;
 
-    public Role() {
-        super();
-    }
-
     public Role(String authority) {
-        this.authority = authority;
-    }
-
-    public Role(Integer customRoleId, String authority) {
-        this.customRoleId = customRoleId;
         this.authority = authority;
     }
 
