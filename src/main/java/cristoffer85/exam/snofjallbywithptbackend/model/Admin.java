@@ -17,15 +17,16 @@ import java.util.Set;
 public class Admin implements UserDetails {
 
     @Id
-    private String adminId;
+    private String id;
 
     @Indexed(unique = true)
     private String username;
+
+    private String name;
     private String password;
+    private String position;
 
     private Set<Role> authorities = new HashSet<>();
-
-    private String position;
 
     public Admin() {
         super();

@@ -10,14 +10,14 @@ import cristoffer85.exam.snofjallbywithptbackend.repository.RoleRepository;
 import cristoffer85.exam.snofjallbywithptbackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.AuthenticationException;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -64,7 +64,7 @@ public class AuthenticationService {                // Class that handles Regist
 
             // Generate a unique userId (you can use UUID for this)
             String userId = UUID.randomUUID().toString();
-            newUser.setUserId(userId);
+            newUser.setId(userId);
 
             return userRepository.save(newUser);
 
@@ -115,11 +115,11 @@ public class AuthenticationService {                // Class that handles Regist
 
             return new LoginResponseDTO(userOrAdmin, token);
         } catch (BadCredentialsException e) {
-            // Handle bad credentials exception
-            return new LoginResponseDTO(null, "Incorrect Credentials");
+            // Throw the exception instead of returning a response
+            throw new BadCredentialsException("Incorrect Credentials");
         } catch (AuthenticationException e) {
-            // Handle other authentication exceptions
-            return new LoginResponseDTO(null, "Authentication failed");
+            // Throw a different exception for other authentication errors
+            throw new InternalAuthenticationServiceException("Authentication failed", e);
         }
     }
 }

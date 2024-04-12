@@ -17,10 +17,10 @@ import java.util.Set;
 public class User implements UserDetails {
 
     @Id
-    private String userId;
-
+    private String id;
     @Indexed(unique = true)
     private String username;
+
     private String password;
 
     private Set<Role> authorities = new HashSet<>();

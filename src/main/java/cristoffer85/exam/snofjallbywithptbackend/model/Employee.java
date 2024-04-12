@@ -1,6 +1,7 @@
 package cristoffer85.exam.snofjallbywithptbackend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -11,19 +12,25 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Data
+@AllArgsConstructor
 @Document(collection = "employees")
 public class Employee implements UserDetails {
 
     @Id
     private String id;
-    private String name;
-    private String position;
 
     @Indexed(unique = true)
     private String username;
+
+    private String name;
     private String password;
+    private String position;
 
     private Set<Role> authorities = new HashSet<>();
+
+    public Employee() {
+        super();
+    }
 
     @Override
     @JsonIgnore

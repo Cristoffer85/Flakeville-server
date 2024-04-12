@@ -51,20 +51,26 @@ public class AdminSetup {               // Class to mainly set up the admins = b
             // Create a new Admin----------------
             roles.add(adminRole);
             Admin admin = new Admin();
+
             admin.setUsername("admin");
             admin.setPassword(passwordEncoder.encode("superadminpassword"));
+
+            admin.setName("Pelle Larsson");
+            admin.setPosition("Uber boss no 1");
             admin.setAuthorities(roles);
-            admin.setPosition("Uber boss");
             adminRepository.save(admin);
             //----------------------------------
 
             // Create a new Admin 2 ----------------
             roles.add(adminRole);
             Admin admin2 = new Admin();
+
             admin2.setUsername("admin2");
             admin2.setPassword(passwordEncoder.encode("superadminpassword2"));
+
+            admin2.setName("Lisa Larsson");
+            admin2.setPosition("Uber boss no 2 (no less than Uber Boss 1");
             admin2.setAuthorities(roles);
-            admin2.setPosition("A little less Uber boss");
             adminRepository.save(admin2);
             //----------------------------------
         }
