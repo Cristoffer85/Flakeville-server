@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,6 +23,11 @@ public class User implements UserDetails {
     private String username;
 
     private String password;
+
+    private String email;
+    private String telephone;
+    private Date birthday;
+    private String address;
 
     private Set<Role> authorities = new HashSet<>();
 

@@ -1,6 +1,7 @@
 package cristoffer85.exam.snofjallbywithptbackend.service;
 
 import cristoffer85.exam.snofjallbywithptbackend.DTO.LoginResponseDTO;
+import cristoffer85.exam.snofjallbywithptbackend.model.Admin;
 import cristoffer85.exam.snofjallbywithptbackend.model.Employee;
 import cristoffer85.exam.snofjallbywithptbackend.model.Role;
 import cristoffer85.exam.snofjallbywithptbackend.model.User;
@@ -105,20 +106,22 @@ public class AuthenticationService {                // Class that handles Regist
             String token = tokenService.generateJwt(auth);
 
             Object userOrAdmin;
+            Role role;
             if (userRepository.findByUsername(username).isPresent()) {
                 userOrAdmin = userRepository.findByUsername(username).get();
+                role = ((User) userOrAdmin).getAuthorities().iterator().next(); // Assuming each user has only one role
             } else if (adminRepository.findByUsername(username).isPresent()) {
                 userOrAdmin = adminRepository.findByUsername(username).get();
+                role = ((Admin) userOrAdmin).getAuthorities().iterator().next(); // Assuming each admin has only one role
             } else {
                 userOrAdmin = null;
+                role = null;
             }
 
-            return new LoginResponseDTO(userOrAdmin, token);
+            return new LoginResponseDTO(userOrAdmin, token, role);
         } catch (BadCredentialsException e) {
-            // Throw the exception instead of returning a response
             throw new BadCredentialsException("Incorrect Credentials");
         } catch (AuthenticationException e) {
-            // Throw a different exception for other authentication errors
             throw new InternalAuthenticationServiceException("Authentication failed", e);
         }
     }
