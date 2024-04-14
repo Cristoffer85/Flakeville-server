@@ -10,6 +10,4 @@ public class UserUpdateDTO {
     private String address;
     private String telephone;
     private String email;
-
-    // Getters and setters...
 }
