@@ -1,5 +1,6 @@
 package cristoffer85.exam.snofjallbywithptbackend.controller;
 
+import cristoffer85.exam.snofjallbywithptbackend.DTO.UserUpdateDTO;
 import cristoffer85.exam.snofjallbywithptbackend.model.Employee;
 import cristoffer85.exam.snofjallbywithptbackend.model.User;
 import cristoffer85.exam.snofjallbywithptbackend.repository.EmployeeRepository;
@@ -42,12 +43,13 @@ public class AdminController {
     }
 
     @PutMapping("/updateUser/{username}")
-    public User updateUser(@PathVariable String username, @RequestBody User user) {
+    public User updateUser(@PathVariable String username, @RequestBody UserUpdateDTO userUpdateDTO) {
         User existingUser = userRepository.findByUsername(username).orElse(null);
         if (existingUser != null) {
-
-            existingUser.setUsername(user.getUsername());
-            existingUser.setPassword(user.getPassword());
+            existingUser.setBirthday(userUpdateDTO.getBirthday());
+            existingUser.setAddress(userUpdateDTO.getAddress());
+            existingUser.setTelephone(userUpdateDTO.getTelephone());
+            existingUser.setEmail(userUpdateDTO.getEmail());
 
             return userRepository.save(existingUser);
         }
