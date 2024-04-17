@@ -9,6 +9,8 @@ import cristoffer85.exam.snofjallbywithptbackend.repository.AdminRepository;
 import cristoffer85.exam.snofjallbywithptbackend.repository.EmployeeRepository;
 import cristoffer85.exam.snofjallbywithptbackend.repository.RoleRepository;
 import cristoffer85.exam.snofjallbywithptbackend.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.authentication.*;
@@ -18,7 +20,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.AuthenticationException;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -27,6 +28,7 @@ import java.util.UUID;
 @Service
 @Transactional
 public class AuthenticationService {                // Class that handles Registration of new user, and login of a user (Authenticates that they are valid) Uses LoginResponseDTO among others
+    private static final Logger logger = LoggerFactory.getLogger(AuthenticationService.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -52,6 +54,7 @@ public class AuthenticationService {                // Class that handles Regist
     public User registerUser(String username, String password) {
         try {
             String encodedPassword = passwordEncoder.encode(password);
+            logger.info("Hashed password when creating user: {}", encodedPassword);
             Role userRole = roleRepository.findByAuthority("USER")
                     .orElseThrow(() -> new RuntimeException("USER role not found"));
 
@@ -75,9 +78,10 @@ public class AuthenticationService {                // Class that handles Regist
         }
     }
 
-    public Employee registerEmployee(String name, String position, String username, String password) {
+    public Employee registerEmployee(String username, String password, String name, String position) {
         try {
             String encodedPassword = passwordEncoder.encode(password);
+            logger.info("Hashed password when creating employee: {}", encodedPassword);
             Role employeeRole = roleRepository.findByAuthority("EMPLOYEE")
                     .orElseThrow(() -> new RuntimeException("EMPLOYEE role not found"));
 
@@ -85,10 +89,10 @@ public class AuthenticationService {                // Class that handles Regist
             authorities.add(employeeRole);
 
             Employee newEmployee = new Employee();
-            newEmployee.setName(name);
-            newEmployee.setPosition(position);
             newEmployee.setUsername(username);
             newEmployee.setPassword(encodedPassword);
+            newEmployee.setName(name);
+            newEmployee.setPosition(position);
             newEmployee.setAuthorities(authorities);
 
             return employeeRepository.save(newEmployee);
@@ -101,27 +105,37 @@ public class AuthenticationService {                // Class that handles Regist
 
     public LoginResponseDTO loginUser(String username, String password) {
         try {
+            logger.info("Hashed password when logging in: {}", passwordEncoder.encode(password));
             Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 
             String token = tokenService.generateJwt(auth);
 
-            Object userOrAdmin;
+            Object userOrAdminOrEmployee;
             Role role;
             if (userRepository.findByUsername(username).isPresent()) {
-                userOrAdmin = userRepository.findByUsername(username).get();
-                role = ((User) userOrAdmin).getAuthorities().iterator().next(); // Assuming each user has only one role
+                userOrAdminOrEmployee = userRepository.findByUsername(username).get();
+                role = ((User) userOrAdminOrEmployee).getAuthorities().iterator().next(); // Assuming each user has only one role
+                logger.info("User found in userRepository with username: {}", username);
             } else if (adminRepository.findByUsername(username).isPresent()) {
-                userOrAdmin = adminRepository.findByUsername(username).get();
-                role = ((Admin) userOrAdmin).getAuthorities().iterator().next(); // Assuming each admin has only one role
+                userOrAdminOrEmployee = adminRepository.findByUsername(username).get();
+                role = ((Admin) userOrAdminOrEmployee).getAuthorities().iterator().next(); // Assuming each admin has only one role
+                logger.info("User found in adminRepository with username: {}", username);
+            } else if (employeeRepository.findByUsername(username).isPresent()) {
+                userOrAdminOrEmployee = employeeRepository.findByUsername(username).get();
+                role = ((Employee) userOrAdminOrEmployee).getAuthorities().iterator().next(); // Assuming each employee has only one role
+                logger.info("User found in employeeRepository with username: {}", username);
             } else {
-                userOrAdmin = null;
+                userOrAdminOrEmployee = null;
                 role = null;
+                logger.warn("No user found with username: {}", username);
             }
 
-            return new LoginResponseDTO(userOrAdmin, token, role);
+            return new LoginResponseDTO(userOrAdminOrEmployee, token, role);
         } catch (BadCredentialsException e) {
+            logger.error("Incorrect Credentials for username: {}", username, e);
             throw new BadCredentialsException("Incorrect Credentials");
         } catch (AuthenticationException e) {
+            logger.error("Authentication failed for username: {}", username, e);
             throw new InternalAuthenticationServiceException("Authentication failed", e);
         }
     }

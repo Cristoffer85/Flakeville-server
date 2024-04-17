@@ -22,9 +22,10 @@ public class Admin implements UserDetails {
     @Indexed(unique = true)
     private String username;
 
-    private String name;
     private String password;
+
     private String position;
+    private String name;
 
     private Set<Role> authorities = new HashSet<>();
 

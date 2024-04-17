@@ -1,5 +1,6 @@
 package cristoffer85.exam.snofjallbywithptbackend.controller;
 
+import cristoffer85.exam.snofjallbywithptbackend.DTO.RegistrationDTO;
 import cristoffer85.exam.snofjallbywithptbackend.DTO.UserUpdateDTO;
 import cristoffer85.exam.snofjallbywithptbackend.model.Employee;
 import cristoffer85.exam.snofjallbywithptbackend.model.User;
@@ -42,6 +43,11 @@ public class AdminController {
         return userRepository.findByUsername(username).orElse(null);
     }
 
+    @PostMapping("/createUser")
+    public User registerUser(@RequestBody RegistrationDTO body){
+        return authenticationService.registerUser(body.getUsername(), body.getPassword());
+    }
+
     @PutMapping("/updateUser/{username}")
     public User updateUser(@PathVariable String username, @RequestBody UserUpdateDTO userUpdateDTO) {
         User existingUser = userRepository.findByUsername(username).orElse(null);
@@ -78,10 +84,10 @@ public class AdminController {
     @PostMapping("/createEmployee")
     public Employee createEmployee(@RequestBody Employee employee) {
         return authenticationService.registerEmployee(
-                employee.getName(),
-                employee.getPosition(),
                 employee.getUsername(),
-                employee.getPassword()
+                employee.getPassword(),
+                employee.getName(),
+                employee.getPosition()
         );
     }
 

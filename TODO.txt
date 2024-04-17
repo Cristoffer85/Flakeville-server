@@ -1,8 +1,15 @@
 TODO:
-* Make a ground-scheme/planning to check over what variables shall be stored in the database, for each role
 * Plan out what data (and how) shall be taken from the weather API, and how it shall be viewed
-
 * Write tests for all classes.. (available and doable Controllers and Services = done)
+
+
+* Refactor logic for admincontroller. Right now it doesnt have a service, and much of the logic is in the controller and uses various repositories directly. Check that over.
+  Usercontroller has a nice logic. Look at that.
+
+* Previous TO:DO implements much of this question too, alot of the logic are in the controllers, not much in services.
+  Maybe need to check that over more.
+
+
 
 
 
@@ -10,6 +17,6 @@ TODO:
 DONE:
 * Implement good Weather (Snow, mostly) API in backend
  - Super-awesome (free, as well) API found at https://rapidapi.com/joeykyber/api/ski-resort-forecast
-
 * 3 Roles, Admin, Employee and User implemented and working through security
 * Good MongoDB Database Structure implemented
+* Make a ground-scheme/planning to check over what variables shall be stored in the database, for each role
