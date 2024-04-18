@@ -54,7 +54,6 @@ public class AuthenticationService {                // Class that handles Regist
     public User registerUser(String username, String password) {
         try {
             String encodedPassword = passwordEncoder.encode(password);
-            logger.info("Hashed password when creating user: {}", encodedPassword);
             Role userRole = roleRepository.findByAuthority("USER")
                     .orElseThrow(() -> new RuntimeException("USER role not found"));
 
@@ -81,7 +80,6 @@ public class AuthenticationService {                // Class that handles Regist
     public Employee registerEmployee(String username, String password, String name, String position) {
         try {
             String encodedPassword = passwordEncoder.encode(password);
-            logger.info("Hashed password when creating employee: {}", encodedPassword);
             Role employeeRole = roleRepository.findByAuthority("EMPLOYEE")
                     .orElseThrow(() -> new RuntimeException("EMPLOYEE role not found"));
 
@@ -105,7 +103,6 @@ public class AuthenticationService {                // Class that handles Regist
 
     public LoginResponseDTO loginUser(String username, String password) {
         try {
-            logger.info("Hashed password when logging in: {}", passwordEncoder.encode(password));
             Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 
             String token = tokenService.generateJwt(auth);
@@ -115,27 +112,21 @@ public class AuthenticationService {                // Class that handles Regist
             if (userRepository.findByUsername(username).isPresent()) {
                 userOrAdminOrEmployee = userRepository.findByUsername(username).get();
                 role = ((User) userOrAdminOrEmployee).getAuthorities().iterator().next(); // Assuming each user has only one role
-                logger.info("User found in userRepository with username: {}", username);
             } else if (adminRepository.findByUsername(username).isPresent()) {
                 userOrAdminOrEmployee = adminRepository.findByUsername(username).get();
                 role = ((Admin) userOrAdminOrEmployee).getAuthorities().iterator().next(); // Assuming each admin has only one role
-                logger.info("User found in adminRepository with username: {}", username);
             } else if (employeeRepository.findByUsername(username).isPresent()) {
                 userOrAdminOrEmployee = employeeRepository.findByUsername(username).get();
                 role = ((Employee) userOrAdminOrEmployee).getAuthorities().iterator().next(); // Assuming each employee has only one role
-                logger.info("User found in employeeRepository with username: {}", username);
             } else {
                 userOrAdminOrEmployee = null;
                 role = null;
-                logger.warn("No user found with username: {}", username);
             }
 
             return new LoginResponseDTO(userOrAdminOrEmployee, token, role);
         } catch (BadCredentialsException e) {
-            logger.error("Incorrect Credentials for username: {}", username, e);
             throw new BadCredentialsException("Incorrect Credentials");
         } catch (AuthenticationException e) {
-            logger.error("Authentication failed for username: {}", username, e);
             throw new InternalAuthenticationServiceException("Authentication failed", e);
         }
     }
