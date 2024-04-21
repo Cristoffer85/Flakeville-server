@@ -18,7 +18,7 @@ public class PowderTrackerService {
 
     public String getCurrentConditions() throws IOException {
         Request request = new Request.Builder()
-                .url("https://ski-resort-forecast.p.rapidapi.com/Lindvallen/snowConditions?units=m")
+                .url("https://ski-resort-forecast.p.rapidapi.com/Salen/snowConditions?units=m")
                 .get()
                 .addHeader("X-RapidAPI-Key", "71467c3251mshe7a05d529b2b97bp1973c1jsn4f20d53a2d86")
                 .addHeader("X-RapidAPI-Host", "ski-resort-forecast.p.rapidapi.com")
@@ -31,7 +31,7 @@ public class PowderTrackerService {
 
     public String getHourlyConditions() throws IOException {
         Request request = new Request.Builder()
-                .url("https://ski-resort-forecast.p.rapidapi.com/Lindvallen/hourly?units=m&el=top&c=true")
+                .url("https://ski-resort-forecast.p.rapidapi.com/Salen/hourly?units=m&el=top&c=true")
                 .get()
                 .addHeader("X-RapidAPI-Key", "71467c3251mshe7a05d529b2b97bp1973c1jsn4f20d53a2d86")
                 .addHeader("X-RapidAPI-Host", "ski-resort-forecast.p.rapidapi.com")
@@ -44,7 +44,7 @@ public class PowderTrackerService {
 
     public String get5DayConditions() throws IOException {
         Request request = new Request.Builder()
-                .url("https://ski-resort-forecast.p.rapidapi.com/Lindvallen/forecast?units=m&el=top")
+                .url("https://ski-resort-forecast.p.rapidapi.com/Salen/forecast?units=m&el=top")
                 .get()
                 .addHeader("X-RapidAPI-Key", "71467c3251mshe7a05d529b2b97bp1973c1jsn4f20d53a2d86")
                 .addHeader("X-RapidAPI-Host", "ski-resort-forecast.p.rapidapi.com")
