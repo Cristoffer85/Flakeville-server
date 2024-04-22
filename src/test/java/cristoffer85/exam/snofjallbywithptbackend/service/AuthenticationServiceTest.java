@@ -1,13 +1,15 @@
 package cristoffer85.exam.snofjallbywithptbackend.service;
 
-import cristoffer85.exam.snofjallbywithptbackend.DTO.LoginResponseDTO;
-import cristoffer85.exam.snofjallbywithptbackend.model.Employee;
-import cristoffer85.exam.snofjallbywithptbackend.model.Role;
-import cristoffer85.exam.snofjallbywithptbackend.model.User;
-import cristoffer85.exam.snofjallbywithptbackend.repository.AdminRepository;
-import cristoffer85.exam.snofjallbywithptbackend.repository.EmployeeRepository;
-import cristoffer85.exam.snofjallbywithptbackend.repository.RoleRepository;
-import cristoffer85.exam.snofjallbywithptbackend.repository.UserRepository;
+import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.dto.LoginResponseDTO;
+import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.Employee;
+import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.Role;
+import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.User;
+import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.service.AuthenticationService;
+import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.service.TokenService;
+import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.AdminRepository;
+import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.EmployeeRepository;
+import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.RoleRepository;
+import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

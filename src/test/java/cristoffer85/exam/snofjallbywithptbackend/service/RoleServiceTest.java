@@ -1,7 +1,8 @@
 package cristoffer85.exam.snofjallbywithptbackend.service;
 
-import cristoffer85.exam.snofjallbywithptbackend.model.User;
-import cristoffer85.exam.snofjallbywithptbackend.repository.UserRepository;
+import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.User;
+import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.service.RoleService;
+import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

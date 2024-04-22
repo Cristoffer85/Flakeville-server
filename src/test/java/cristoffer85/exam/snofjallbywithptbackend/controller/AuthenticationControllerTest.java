@@ -1,9 +1,10 @@
 package cristoffer85.exam.snofjallbywithptbackend.controller;
 
-import cristoffer85.exam.snofjallbywithptbackend.DTO.LoginResponseDTO;
-import cristoffer85.exam.snofjallbywithptbackend.DTO.RegistrationDTO;
-import cristoffer85.exam.snofjallbywithptbackend.model.User;
-import cristoffer85.exam.snofjallbywithptbackend.service.AuthenticationService;
+import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.controller.AuthenticationController;
+import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.dto.LoginResponseDTO;
+import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.dto.RegistrationDTO;
+import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.User;
+import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.service.AuthenticationService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
