@@ -11,5 +11,5 @@ import java.util.List;
 public class Order {
     @Id
     private String id;
-    private List<Product> products;
+    private List<ProductQuantity> products;
 }

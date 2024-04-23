@@ -12,6 +12,7 @@ import java.util.UUID;
 @Document(collection = "products")
 public class Product {
 
+    // method that generates a unique id for each product and save into separate collection in mongoDB (there you can see all current unique ids = up to 10 digits = 9.999.999.999 products)
     public static final String SEQUENCE_NAME = "products_sequence";
 
     @Id

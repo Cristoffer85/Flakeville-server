@@ -25,7 +25,7 @@ public class UserController {
         return userService.updateUser(username, userUpdateDto);
     }
 
-    @PostMapping("/{username}/orders")
+    @PostMapping("addOrder/{username}/orders")
     public User addOrder(@PathVariable String username, @RequestBody Order order) {
         return userService.addOrder(username, order);
     }

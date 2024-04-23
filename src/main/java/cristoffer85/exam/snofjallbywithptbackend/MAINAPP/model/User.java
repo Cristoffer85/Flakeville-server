@@ -10,10 +10,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Data
 @AllArgsConstructor
@@ -34,7 +31,8 @@ public class User implements UserDetails {
     private String address;
 
     private Set<Role> authorities = new HashSet<>();
-    private List<Order> orders;
+
+    private List<Order> orders = new ArrayList<>();
 
     public User() {
         super();
