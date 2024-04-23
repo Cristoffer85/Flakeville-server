@@ -1,1 +1,0 @@
-* FIX more logic into Service-classes from Controllers (Possibly get rid of DTO:s as well?)

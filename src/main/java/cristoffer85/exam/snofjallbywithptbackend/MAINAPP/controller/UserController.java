@@ -2,8 +2,7 @@ package cristoffer85.exam.snofjallbywithptbackend.MAINAPP.controller;
 
 import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.dto.UserUpdateDTO;
 import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.User;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.UserRepository;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.service.RoleService;
+import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,28 +12,15 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-    private RoleService roleService;
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @GetMapping("/")
-    public String helloUserController() {
-        return "User access level";
-    }
+    private UserService userService;
 
     @GetMapping("/getOneUser/{username}")
     public User getOneUser(@PathVariable String username) {
-        return roleService.getOneUser(username);
+        return userService.getOneUser(username);
     }
 
-    @PutMapping("/{username}")
+    @PutMapping("/updateUser/{username}")
     public User updateUser(@PathVariable String username, @RequestBody UserUpdateDTO userUpdateDto) {
-        User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
-        user.setEmail(userUpdateDto.getEmail());
-        user.setBirthday(userUpdateDto.getBirthday());
-        user.setAddress(userUpdateDto.getAddress());
-        user.setTelephone(userUpdateDto.getTelephone());
-        return userRepository.save(user);
+        return userService.updateUser(username, userUpdateDto);
     }
 }

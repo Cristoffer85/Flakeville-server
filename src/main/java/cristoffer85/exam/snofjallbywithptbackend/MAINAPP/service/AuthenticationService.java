@@ -27,7 +27,7 @@ import java.util.UUID;
 
 @Service
 @Transactional
-public class AuthenticationService {                // Class that handles Registration of new user, and login of a user (Authenticates that they are valid) Uses LoginResponseDTO among others
+public class AuthenticationService {                // Class that handles Registration of new user and employee, and login (Authenticates that they are valid) Uses LoginResponseDTO among others
     private static final Logger logger = LoggerFactory.getLogger(AuthenticationService.class);
 
     @Autowired
@@ -65,14 +65,12 @@ public class AuthenticationService {                // Class that handles Regist
             newUser.setPassword(encodedPassword);
             newUser.setAuthorities(authorities);
 
-            // Generate a unique userId (you can use UUID for this)
             String userId = UUID.randomUUID().toString();
             newUser.setId(userId);
 
             return userRepository.save(newUser);
 
         } catch (DataIntegrityViolationException e) {
-            // Catch the exception thrown when there's a unique constraint violation
             throw new RuntimeException("Username '" + username + "' already exists. Please choose a different username.");
         }
     }
@@ -96,7 +94,6 @@ public class AuthenticationService {                // Class that handles Regist
             return employeeRepository.save(newEmployee);
 
         } catch (DataIntegrityViolationException e) {
-            // Catch the exception thrown when there's a unique constraint violation
             throw new RuntimeException("Username '" + username + "' already exists. Please choose a different username.");
         }
     }
@@ -111,13 +108,13 @@ public class AuthenticationService {                // Class that handles Regist
             Role role;
             if (userRepository.findByUsername(username).isPresent()) {
                 userOrAdminOrEmployee = userRepository.findByUsername(username).get();
-                role = ((User) userOrAdminOrEmployee).getAuthorities().iterator().next(); // Assuming each user has only one role
+                role = ((User) userOrAdminOrEmployee).getAuthorities().iterator().next();
             } else if (adminRepository.findByUsername(username).isPresent()) {
                 userOrAdminOrEmployee = adminRepository.findByUsername(username).get();
-                role = ((Admin) userOrAdminOrEmployee).getAuthorities().iterator().next(); // Assuming each admin has only one role
+                role = ((Admin) userOrAdminOrEmployee).getAuthorities().iterator().next();
             } else if (employeeRepository.findByUsername(username).isPresent()) {
                 userOrAdminOrEmployee = employeeRepository.findByUsername(username).get();
-                role = ((Employee) userOrAdminOrEmployee).getAuthorities().iterator().next(); // Assuming each employee has only one role
+                role = ((Employee) userOrAdminOrEmployee).getAuthorities().iterator().next();
             } else {
                 userOrAdminOrEmployee = null;
                 role = null;

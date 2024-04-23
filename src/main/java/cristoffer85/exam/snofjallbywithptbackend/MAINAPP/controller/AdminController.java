@@ -4,9 +4,7 @@ import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.dto.RegistrationDTO;
 import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.dto.UserUpdateDTO;
 import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.Employee;
 import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.User;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.EmployeeRepository;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.UserRepository;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.service.AuthenticationService;
+import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,96 +16,55 @@ import java.util.List;
 public class AdminController {
 
     @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private EmployeeRepository employeeRepository;
-
-    @Autowired
-    private AuthenticationService authenticationService;
-
-    @GetMapping("/")
-    public String helloAdminController() {
-        return "Admin level access";
-    }
-
-    // ################### Users ###################
+    private AdminService adminService;
 
     @GetMapping("/getAllUsers")
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        return adminService.getAllUsers();
     }
 
     @GetMapping("/getOneUser/{username}")
     public User getOneUser(@PathVariable String username) {
-        return userRepository.findByUsername(username).orElse(null);
+        return adminService.getOneUser(username);
     }
 
     @PostMapping("/createUser")
     public User registerUser(@RequestBody RegistrationDTO body){
-        return authenticationService.registerUser(body.getUsername(), body.getPassword());
+        return adminService.registerUser(body);
     }
 
     @PutMapping("/updateUser/{username}")
     public User updateUser(@PathVariable String username, @RequestBody UserUpdateDTO userUpdateDTO) {
-        User existingUser = userRepository.findByUsername(username).orElse(null);
-        if (existingUser != null) {
-            existingUser.setBirthday(userUpdateDTO.getBirthday());
-            existingUser.setAddress(userUpdateDTO.getAddress());
-            existingUser.setTelephone(userUpdateDTO.getTelephone());
-            existingUser.setEmail(userUpdateDTO.getEmail());
-
-            return userRepository.save(existingUser);
-        }
-        return null;
+        return adminService.updateUser(username, userUpdateDTO);
     }
 
     @DeleteMapping("/deleteOneUser/{username}")
     public void deleteOneUser(@PathVariable String username) {
-        userRepository.deleteByUsername(username);
+        adminService.deleteOneUser(username);
     }
-
-
-
-    // ################### Employees ###################
 
     @GetMapping("/getAllEmployees")
     public List<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+        return adminService.getAllEmployees();
     }
 
     @GetMapping("/getOneEmployee/{username}")
     public Employee getOneEmployee(@PathVariable String username) {
-        return employeeRepository.findByUsername(username).orElse(null);
+        return adminService.getOneEmployee(username);
     }
 
     @PostMapping("/createEmployee")
     public Employee createEmployee(@RequestBody Employee employee) {
-        return authenticationService.registerEmployee(
-                employee.getUsername(),
-                employee.getPassword(),
-                employee.getName(),
-                employee.getPosition()
-        );
+        return adminService.createEmployee(employee);
     }
 
     @PutMapping("/updateEmployee/{username}")
     public Employee updateEmployee(@PathVariable String username, @RequestBody Employee employeeDetails) {
-        Employee employee = employeeRepository.findByUsername(username).orElse(null);
-        if (employee != null) {
-            employee.setName(employeeDetails.getName());
-            employee.setPosition(employeeDetails.getPosition());
-            Employee updatedEmployee = employeeRepository.save(employee);
-            return updatedEmployee;
-        }
-        return null;
+        return adminService.updateEmployee(username, employeeDetails);
     }
 
     @DeleteMapping("/deleteEmployee/{username}")
     public void deleteEmployee(@PathVariable String username) {
-        Employee employee = employeeRepository.findByUsername(username).orElse(null);
-        if (employee != null) {
-            employeeRepository.delete(employee);
-        }
+        adminService.deleteEmployee(username);
     }
 }

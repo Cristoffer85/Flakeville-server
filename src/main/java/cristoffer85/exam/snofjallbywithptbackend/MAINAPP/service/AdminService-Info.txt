@@ -1,4 +1,0 @@
-No AdminService class present,
-- due to Admins (for Security reasons) are only inserted in the backend application itself from start.
-
-See configuration -> AdminSetup.java -- initializeAdminUser()

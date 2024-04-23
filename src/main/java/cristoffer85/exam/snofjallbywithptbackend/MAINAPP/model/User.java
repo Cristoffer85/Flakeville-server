@@ -2,6 +2,7 @@ package cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import cristoffer85.exam.snofjallbywithptbackend.STORE.model.Order;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -32,6 +34,7 @@ public class User implements UserDetails {
     private String address;
 
     private Set<Role> authorities = new HashSet<>();
+    private List<Order> orders;
 
     public User() {
         super();
