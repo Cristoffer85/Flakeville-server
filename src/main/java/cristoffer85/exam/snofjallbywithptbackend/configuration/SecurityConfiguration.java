@@ -52,17 +52,24 @@ public class SecurityConfiguration {                    // Class responsible for
         http
                 .csrf(csrf -> csrf.disable())
 
-                // Chain below authorities structured, so that:
-
-                // 1. Admin    :   ADMIN, EMPLOYEE, USER authorities
-                // 2. Employee :   EMPLOYEE, USER authorities
-                // 3. User     :   USER authorities
+                // Security Chain below structured, so that (Look a little closer in comments :)
 
                 .authorizeHttpRequests(auth -> {
+                    // = All users have access to /auth/** and /skiResort/** endpoints
                     auth.requestMatchers("/auth/**", "/skiResort/**").permitAll();
+
+                    // = ADMIN is the only role with access to /admin/** endpoint
                     auth.requestMatchers("/admin/**").hasRole("ADMIN");
-                    auth.requestMatchers("/employee/**").hasAnyRole("ADMIN", "EMPLOYEE");    // Clearance for later adding specific employee controller class with endpoints (not implemented now)
+
+                    // = ADMIN and EMPLOYEE are only roles with access to /employee/** endpoint
+                    auth.requestMatchers("/employee/**").hasAnyRole("ADMIN", "EMPLOYEE");
+
+                    // = ADMIN, EMPLOYEE and USER are only roles with access to /user/** endpoint
                     auth.requestMatchers("/user/**").hasAnyRole("ADMIN", "EMPLOYEE", "USER");
+
+                    // = ADMIN and EMPLOYEE are only roles with access to /products/** endpoint
+                    auth.requestMatchers("/products/**").hasAnyRole("ADMIN", "EMPLOYEE");
+
                     auth.anyRequest().authenticated();
                 });
 

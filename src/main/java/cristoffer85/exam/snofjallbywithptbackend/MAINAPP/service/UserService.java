@@ -3,6 +3,7 @@ package cristoffer85.exam.snofjallbywithptbackend.MAINAPP.service;
 import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.dto.UserUpdateDTO;
 import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.User;
 import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.UserRepository;
+import cristoffer85.exam.snofjallbywithptbackend.STORE.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +24,14 @@ public class UserService {
         user.setAddress(userUpdateDto.getAddress());
         user.setTelephone(userUpdateDto.getTelephone());
         return userRepository.save(user);
+    }
+
+    public User addOrder(String username, Order order) {
+        User user = userRepository.findByUsername(username).orElse(null);
+        if (user != null) {
+            user.getOrders().add(order);
+            userRepository.save(user);
+        }
+        return user;
     }
 }
