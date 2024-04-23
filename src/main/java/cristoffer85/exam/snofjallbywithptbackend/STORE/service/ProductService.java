@@ -13,6 +13,9 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private ProductIDGeneratorService productIDGeneratorService;
+
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
@@ -22,6 +25,7 @@ public class ProductService {
     }
 
     public Product createProduct(Product product) {
+        product.setId(productIDGeneratorService.generateSequence(Product.SEQUENCE_NAME));
         return productRepository.save(product);
     }
 
