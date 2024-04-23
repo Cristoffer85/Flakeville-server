@@ -1,15 +1,6 @@
 TODO:
-* Plan out what data (and how) shall be taken from the weather API, and how it shall be viewed
-* Write tests for all classes.. (available and doable Controllers and Services = done)
-
-
-* Refactor logic for admincontroller. Right now it doesnt have a service, and much of the logic is in the controller and uses various repositories directly. Check that over.
-  Usercontroller has a nice logic. Look at that.
-
-* Previous TO:DO implements much of this question too, alot of the logic are in the controllers, not much in services.
-  Maybe need to check that over more.
-
-
+* Add total cost for previous orders sent and stored in the database for USERS
+* ReWrite now faulty tests (because refactoring) for some classes and add some more tests for other classes (available and doable Controllers and Services = done)
 
 
 
@@ -20,3 +11,8 @@ DONE:
 * 3 Roles, Admin, Employee and User implemented and working through security
 * Good MongoDB Database Structure implemented
 * Make a ground-scheme/planning to check over what variables shall be stored in the database, for each role
+* Refactor logic for admincontroller. Right now it doesnt have a service, and much of the logic is in the controller and uses various repositories directly. Check that over.
+  Usercontroller has a nice logic. Look at that.
+* Previous TO:DO implements much of this question too, alot of the logic are in the controllers, not much in services.
+  Maybe need to check that over more
+* Plan out what data (and how) shall be taken from the weather API, and how it shall be viewed
