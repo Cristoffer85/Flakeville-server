@@ -18,6 +18,7 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
+    // ################### Users ###################
     @GetMapping("/getAllUsers")
     public List<User> getAllUsers() {
         return adminService.getAllUsers();
@@ -35,14 +36,15 @@ public class AdminController {
 
     @PutMapping("/updateUser/{username}")
     public User updateUser(@PathVariable String username, @RequestBody UserUpdateDTO userUpdateDTO) {
-        return adminService.updateUser(username, userUpdateDTO);
-    }
+        return adminService.updateUser(username, userUpdateDTO);}
 
     @DeleteMapping("/deleteOneUser/{username}")
     public void deleteOneUser(@PathVariable String username) {
         adminService.deleteOneUser(username);
     }
 
+
+    // ################### Employees ###################
     @GetMapping("/getAllEmployees")
     public List<Employee> getAllEmployees() {
         return adminService.getAllEmployees();
@@ -60,8 +62,7 @@ public class AdminController {
 
     @PutMapping("/updateEmployee/{username}")
     public Employee updateEmployee(@PathVariable String username, @RequestBody Employee employeeDetails) {
-        return adminService.updateEmployee(username, employeeDetails);
-    }
+        return adminService.updateEmployee(username, employeeDetails);}
 
     @DeleteMapping("/deleteEmployee/{username}")
     public void deleteEmployee(@PathVariable String username) {
