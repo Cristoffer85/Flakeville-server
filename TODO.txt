@@ -1,7 +1,5 @@
 TODO:
-* Add total cost for previous orders sent and stored in the database for USERS
 * ReWrite now faulty tests (because refactoring) for some classes and add some more tests for other classes (available and doable Controllers and Services = done)
-
 
 
 
