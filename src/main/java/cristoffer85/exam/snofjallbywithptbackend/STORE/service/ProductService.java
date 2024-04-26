@@ -20,7 +20,7 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Product getProductById(String id) {
+    public Product getProductById(Long id) {
         return productRepository.findById(id).orElse(null);
     }
 
@@ -29,18 +29,16 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public Product updateProduct(String id, Product product) {
-        Product existingProduct = productRepository.findById(id).orElse(null);
-        if (existingProduct != null) {
-            existingProduct.setName(product.getName());
-            existingProduct.setDescription(product.getDescription());
-            existingProduct.setPrice(product.getPrice());
-            return productRepository.save(existingProduct);
-        }
-        return null;
+    public Product updateProduct(Long id, Product productDetails) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Product not found with id " + id));
+        product.setName(productDetails.getName());
+        product.setPrice(productDetails.getPrice());
+        product.setDescription(productDetails.getDescription()); // Add this line
+        return productRepository.save(product);
     }
 
-    public void deleteProduct(String id) {
+    public void deleteProduct(Long id) {
         productRepository.deleteById(id);
     }
 }

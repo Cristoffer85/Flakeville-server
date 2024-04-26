@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /*
-   Class that handles gernerating a unique ID for each product,
+   Class that handles generating a unique ID for each product,
    since mongoDB does not have a built in auto increment feature.
    This way makes it easier to remember the different ID:s.
 */
