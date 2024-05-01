@@ -24,6 +24,7 @@ public class PowderTrackerController {
         return powderTrackerService.getCurrentConditions();
     }
 
+    /*
     @GetMapping("/hourlyConditions")
     public String gethourlyConditions() throws IOException {
         return powderTrackerService.getHourlyConditions();
@@ -33,4 +34,5 @@ public class PowderTrackerController {
     public String get5DayConditions() throws IOException {
         return powderTrackerService.get5DayConditions();
     }
+    */
 }

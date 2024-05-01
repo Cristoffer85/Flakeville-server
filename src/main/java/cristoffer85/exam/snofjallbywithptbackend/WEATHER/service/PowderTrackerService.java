@@ -30,6 +30,7 @@ public class PowderTrackerService {
         }
     }
 
+    /*
     public String getHourlyConditions() throws IOException {
         Request request = new Request.Builder()
                 .url("https://ski-resort-forecast.p.rapidapi.com/Salen/hourly?units=m&el=top&c=true")
@@ -57,4 +58,5 @@ public class PowderTrackerService {
             return response.body().string();
         }
     }
+    */
 }
