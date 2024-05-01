@@ -1,0 +1,14 @@
+# Instr video how to set up https://www.youtube.com/watch?v=hQV0uZDWHQI
+
+spring:
+  data:
+    mongodb:
+      database: cristoffer85
+      uri: ${spring-cosmos-mongo-uri}
+
+azure:
+  keyvault:
+    uri: https://spring-azure-cosmos.vault.azure.net/
+    client-id: f78cfccc-be29-4087-a76c-082e4f340141
+    client-key: DZN8Q~Sf34vhIxM5lPVXVo7yHOT~NLxMpjq90bu2
+    tenant-id: d061090b-184e-4aac-9d5b-eac4380625ef

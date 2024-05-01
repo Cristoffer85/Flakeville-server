@@ -25,10 +25,11 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
-        <!-- Spring Boot Actuator (For Azure) -->
+        <!-- Spring Boot Vault secrets för Azure -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
+            <groupId>com.azure.spring</groupId>
+            <artifactId>azure-spring-boot-starter-keyvault-secrets</artifactId>
+            <version>3.6.0</version>
         </dependency>
 
         <!-- OAUTH -->
