@@ -2,6 +2,7 @@ package cristoffer85.exam.snofjallbywithptbackend.STORE.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,6 +10,7 @@ import java.util.UUID;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Document(collection = "products")
 public class Product {
 
@@ -20,4 +22,5 @@ public class Product {
     private String name;
     private String description;
     private double price;
+    private String category;
 }
