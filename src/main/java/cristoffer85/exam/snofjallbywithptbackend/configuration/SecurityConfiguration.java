@@ -56,7 +56,7 @@ public class SecurityConfiguration {                    // Class responsible for
 
                 .authorizeHttpRequests(auth -> {
                     // = All users have access to /auth/** and /skiResort/** endpoints
-                    auth.requestMatchers("/auth/**", "/skiResort/**", "/products/getAllProducts", "/products/getOneProduct/{id}").permitAll();
+                    auth.requestMatchers("/auth/**", "/skiResort/**", "/products/getAllProducts", "/products/getOneProduct/{id}", "/products/category/{category}").permitAll();
 
                     // = ADMIN is the only role with access to /admin/** endpoint
                     auth.requestMatchers("/admin/**").hasRole("ADMIN");
