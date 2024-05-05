@@ -49,7 +49,8 @@ public class ProductService {
                 .orElseThrow(() -> new IllegalArgumentException("Product not found with id " + id));
         product.setName(productDetails.getName());
         product.setPrice(productDetails.getPrice());
-        product.setDescription(productDetails.getDescription()); // Add this line
+        product.setDescription(productDetails.getDescription());
+        product.setCategory(productDetails.getCategory());
         return productRepository.save(product);
     }
 
