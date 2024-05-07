@@ -27,9 +27,10 @@ I learned <u>alot</u> about endpoints, http-requests and common work about how c
 ```https://github.com/Cristoffer85/SnofjallbyWithPT-Backend``` from Github
 2. In application.properties, change the following to your own settings:
 ```spring.data.mongodb.uri=${MONGODB_URI:mongodb://localhost:27017/<your database name>}``` the MONGODB_URI is a environment variable that you can set in your IDE or in your deployment environment. By default if the MONGODB_URI is not set, it will use the local MongoDB database.
-3. Run the application with your IDE or with the command ```mvn spring-boot:run```
+3. Run the application in your IDE or (quick-cheat) here: ```mvn spring-boot:run```
 
 ## Usage
+
 
 
 ## Credits
@@ -42,8 +43,15 @@ Classmates from school, Myself, my Family, mighty duck rubber duck and some coPi
 ![badmath](https://img.shields.io/badge/Java-100%25-blue)
 
 ## Features
-* Feature 1: User can register and login
+ADMIN, can:
+* Login, handle every CRUD functionality for every Employee and Guest
+
+EMPLOYEE, can:
+* Login, handle every CRUD functionality for every product in Store, Ski Lift operations and some personal data.
+
+Guest (User), can:
+* Sign up, Login, Book a stay, Rent equipment, Book ski lessons, View previous orders and total cost, See current weather and snow conditions, manage some of its personal data.
 
 
 ## Tests
-
+JUNit tests are located in the test folder and can be run from there. Covering every controller and service class.
