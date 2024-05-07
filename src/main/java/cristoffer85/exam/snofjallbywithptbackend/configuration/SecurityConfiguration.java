@@ -55,9 +55,12 @@ public class SecurityConfiguration {                    // Class responsible for
                 // Security Chain below structured, so that (Look a little closer in comments :)
 
                 .authorizeHttpRequests(auth -> {
+
+                    // --------------------------- PERMITTED FOR ALL --------------------------------
                     // = All users have access to /auth/** and /skiResort/** endpoints
                     auth.requestMatchers("/auth/**", "/skiResort/**", "/products/getAllProducts", "/products/getOneProduct/{id}", "/products/category/{category}").permitAll();
 
+                    // --------------------------- ROLE ENDPOINTS --------------------------------
                     // = ADMIN is the only role with access to /admin/** endpoint
                     auth.requestMatchers("/admin/**").hasRole("ADMIN");
 
@@ -67,8 +70,13 @@ public class SecurityConfiguration {                    // Class responsible for
                     // = ADMIN, EMPLOYEE and USER are only roles with access to /user/** endpoint
                     auth.requestMatchers("/user/**").hasAnyRole("ADMIN", "EMPLOYEE", "USER");
 
+                    // --------------------------- PRODUCT MANAGEMENT --------------------------------
                     // = ADMIN and EMPLOYEE are only roles with access to /products/** endpoint
                     auth.requestMatchers("products/createProduct", "/updateProduct/{id}", "/deleteProduct/{id}").hasAnyRole("ADMIN", "EMPLOYEE");
+
+                    // --------------------------- SKILIFT MANAGEMENT --------------------------------
+                    // = ADMIN and EMPLOYEE are only roles with access to /skilifts/** endpoint
+                    auth.requestMatchers("/skilifts/**").hasAnyRole("ADMIN", "EMPLOYEE");
 
                     auth.anyRequest().authenticated();
                 });
