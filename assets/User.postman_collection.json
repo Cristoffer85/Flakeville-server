@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "21a09f4c-4f33-4533-a555-e5c942a365b5",
+		"name": "User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29284507"
+	},
+	"item": [
+		{
+			"name": "Get One User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiUGVsbGUxIiwiaWF0IjoxNzEzODYzNDQ2LCJyb2xlcyI6IlVTRVIifQ.c-D4Cdee1NQA60OwS1_ixwyx8Kb7_RHIexAV5Js4yCdirzBbpmXFLaMI4-vPgWUl2-fvnIleFafdYkdm_pid3uGiM20tt7OtqyZ9V_zDCoP0IIHVpSkYWKMqguFhSWhrvTKd9_qgBCzkoqKJlx9WesC3YZeAYyM2CR1C-Gsk4v1fzNyt3Em007UyxdycVYImJngGWA-4MqPHVxX3vvlbVUaK32MLGDtaIN1o00aIZl-bPcK_ZuHYTb98psFnF-taZi7ExijIazkMgfM4ump6rEe6wRbplPWrqvfxA-CKva2uE0RrjLwkXrfFmKj6uczUfWpu6PhmRqZo_lvLf4b74A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/user/getOneUser/Pelle1",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"user",
+						"getOneUser",
+						"Pelle1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiUGVsbGUxIiwiaWF0IjoxNzEzOTQ3NjgyLCJyb2xlcyI6IlVTRVIifQ.zUvY3fo499Q-Oc8ZTzUu1PQ1XDeFLHWoxue_20XI_RsJY04_aA2l0ek-d8NP279iqy-vjK0nacEt49QFV_n9hlSWpiM88cgUEiDcjXjYlrOztGAKW1K-d4HBiScI-OGo8xoHC324vCPMcczbkTTvmDDN0s25Pck6ZkynD6c73_0PP74d-TpgZOVxMi8TG6w0mGXb6RGBZkUkyB_XGuCzgXZ6vFCpX8LGF-1XWMuhwxYH9zormuZRhIAsTTThMKpn_xd3RDgBnucyX6sdMGqoU-WMLh8ytWDsbTYNs9tGduH1IsJhvMgCua3xUf0AvxwMNtTy60ea2GqlB1DPU0A74A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"newemail@example.com\",\r\n    \"telephone\": \"1234567890\",\r\n    \"birthday\": \"2000-01-01\",\r\n    \"address\": \"New Address\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/user/updateUser/Pelle1",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"user",
+						"updateUser",
+						"Pelle1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiUGVsbGUxIiwiaWF0IjoxNzEzOTQ2MTEyLCJyb2xlcyI6IlVTRVIifQ.WO3MEEQKGcstcF0CRKofHUBOnWeM_1CsXn0zxyZAeQ9etcOxlTYZnda6EQk8jgXS3yGrgbuUSUM7AxgPodH7_CT8KFm8HdYD9sx1HAHBpqgd1V14bBmGnWHAO-98bElMMixvzfY2w0H5JmSg03J6_9QQKvnyBIRtW7vxtkWRjp6Pb1KNS0LssAjns2owlT1ArBLcLtifiRRefxoZOCKIV4mE74dYb74BMLldJSpYhk8K72rOrIjQE5IdTPyqpWBdJPxuZlMANRmd880f2lvwqYB-IJHFkyp3mJL0YVqFInBxO2qoZZOklLofL3fqys21lXL3fYYi-ZGuzejts6ZfGw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"1\",\r\n    \"products\": [\r\n        {\r\n            \"product\": {\r\n                \"id\": 1,\r\n                \"name\": \"Product Name\",\r\n                \"description\": \"Product Description\",\r\n                \"price\": 100.0\r\n            },\r\n            \"quantity\": 5\r\n        },\r\n        {\r\n            \"product\": {\r\n                \"id\": 2,\r\n                \"name\": \"Another Product\",\r\n                \"description\": \"Another Description\",\r\n                \"price\": 200.0\r\n            },\r\n            \"quantity\": 3\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/user/addOrder/Pelle1/orders",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"user",
+						"addOrder",
+						"Pelle1",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

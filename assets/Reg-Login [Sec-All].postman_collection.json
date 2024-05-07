@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "1ec6eacd-fb32-4994-887c-45d03442167b",
+		"name": "Reg/Login [Sec:All]",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29284507"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\": \"Pelle1\",\r\n\"password\": \"password1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/auth/register",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"superadminpassword\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/auth/login",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

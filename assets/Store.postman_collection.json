@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "a4ff0197-a06c-493d-b953-98aed8c72eac",
+		"name": "Store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29284507"
+	},
+	"item": [
+		{
+			"name": "Create Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MTQ3NDIyODksInJvbGVzIjoiQURNSU4ifQ.bw5p5n1QjASKYDMUH4X-34zkJqOBUI68sUjAl4DgBDWocN6LTConM9usH5iRHp4zkjwgKF0pp8ER2vKsmWMqd0LvE6GIbKqhdr8u6JecLhLDZUja0cn0Wl48__cb3MJw9i-504O3O1lS69c-fvXuKfGs8KIlAN8xH6-WiP6Yxax7Vd6U7KOSOyRh-pCEnT2pe_R5eYw0FsTriJhcXeZZUwnxLnujP_50hCa58ZnUvI305EmH_U_dk3RONsRdhZzudv32J0ZDjw3yd9Tm6rlz_WV2c1Pa6YYsc_II59VKYhHGyz6AZ7pl_kiQt1mrs-FnsSO1xXnzaNCEIAfgJr9kFw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n        \"name\": \"Slalom Skis\", \r\n        \"description\": \"For children. Price/day\", \r\n        \"price\": 99,\r\n        \"category\" : \"Skis\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/products/createProduct",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"products",
+						"createProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Products",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiam9obmRvZTEiLCJpYXQiOjE3MTM4NjU5NzMsInJvbGVzIjoiRU1QTE9ZRUUifQ.iCoBh2WTCyi0lr9pvBTCU5qWL-Xfta1GVlH9PddNifkcTRp9kDPgiU62eTmWftIbLfLg_89ZlVJKpvYH4cX70xxv3AuoaEHTgw4iGkowaR2zpTS9q2Cxd3eXANIJ--y6lDuT00AccDjV7Y4fCcT9XS596e_bEGuGgl8d1uJj4oDy2Zsncn__4-YM66DnoUZGQmgiV_-IR9HmAYaTK_w_FoNvjWfYG7BQtLIOdZkY4svQaoq-8XRfP4cvJ-7_c5XJ0RxtKdw3pnm4rYjFn1fv4eb2vR5qymxnIYdjgJi0-ogt0NxUY3ojchYh717ok8Iao3shmZvLE1u3JldJ-6juUw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/products/getAllProducts",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"products",
+						"getAllProducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiam9obmRvZTEiLCJpYXQiOjE3MTQxMTY3ODgsInJvbGVzIjoiRU1QTE9ZRUUifQ.iCy4rP2SNzXjSOs5q9FBapr4kc-RImlSDzbjufvTcBgq2PLPndY14Cm6BpfZmyDacKsV4vZUkvnuGaJX75wpvP6Dmt6_9ppllL5kY4zdXgT6De9y-XnfoN1RjsF60mwQAIguIIOtd1Y_S82IDdKCNkW6IP_Es53N5vcGaux0Sujgt1N7S3M7BtWvBTlb5aYYWtvkAqMjUq1y5arQYmpzwv9qGspoMFuU8nKaMChkKdfj2ZYVUYdei45DaQAx6Ze-pMQDatOv_j9zJLHJ3DAz9vVgPxEyQKjy0wWP2xG-aeQk3vqZDW3HvZpyD0SWEKXAPsIDCRGKG4C_ACDneA__ww",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/products/getOneProduct/1",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"products",
+						"getOneProduct",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products By Category",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MTQ5Mjg4NDgsInJvbGVzIjoiQURNSU4ifQ.IaruP6JuXpuqbRTqHLdtWEAfpd2fxDHeqMpCGdMV99EF2iJgQktubDAjSCrxtoDWcR_-K8a29M1Ba55OL7e0b50J_tvwxxshaGo5Eo3-eWb9BmNwncotG4jwHDEaiRtHpuhS6u-ImKD2BOwtzojILK14TSzaNLNpqpcDN6gUjnTikKpsasrf5TpjqnBRIwGI5lYJFQ6WUp9JnZ6zsMqZ5DNNp_9KON2Nx2rxXXMsP2lwApwVNwXWJ4QWuZf9dtLcptPCo5kW_D4vjAm-hpJJVA9phX-tWm5a6ix70ZLpKcCABFUKaCx1vzAYnl6_l1q4aYGMbFVAxzVz2oPZT5JFmA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/products/category/Skis",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"products",
+						"category",
+						"Skis"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MTQ5Mjc5NzMsInJvbGVzIjoiQURNSU4ifQ.lV2ElUulf8b2t8TWxP7TrtcdpEosqFGG3VlnI0z9PcbwT1PunknGfY7Ads2jInCrxFpgwnibHgAFYl6xdfC8qsP5L6JkzMOxDxaQ7ffbV4ZpIuG0ge14TuLHgxJekaK4eMzc9RjdHstFVL1DX1AZps6kiC1hR6OwSxGnHW-6mpq-ls8UddO2-c6wrp6b6iNMhwKB-b4lwAZUslBugSTFqjFEGVXG2tid2wIXM213kyYH1Gx3qgd6DSNNMFYUUGkX3zwu22Wb4sH5lldaEDo5Wvas-pn7V9ZGtARc1KBthM_Rt1nn4zNLQg3k_R2IFxREz4zcFxv0w-meBSAwQYmLkQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"name\": \"Gloves\", \r\n    \"description\": \"For children. Price/day\", \r\n    \"price\": 19, \r\n    \"category\": \"Safety\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/products/updateProduct/17",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"products",
+						"updateProduct",
+						"17"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiam9obmRvZTEiLCJpYXQiOjE3MTQxMTc2ODYsInJvbGVzIjoiRU1QTE9ZRUUifQ.j6TV3ErrIn7aGLE6TMQd9QXLTBoAVwYfVbfUZFf2mOmbbEBb042id7yA10XfvNUGQrG-aLsRKP4m8Y7a379fmoAc-I3OrnbSerDlUfnKkz1bLk2ff2LrTb3ivrF0_JSomEiqH8WmIOclirLQmFWN-1EXsM_ZVajk3gLwgEIru2YUDGh2G_Bunp4q8JsHI76b-BdZ9xUuToZfjJLAiRMUwtm_3zDZyKZqke0szjPkcqRt2DGUKcK705s59F-8qNBa27MWWlV5C8G9nRrRxNluGqBdLauNu-hryn2ZvxNAmRpXX7EO-UVFGVyAtx8FqWUD2VMmrBWkgiZif0GrtD8H0A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/products/deleteProduct/8",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"products",
+						"deleteProduct",
+						"8"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

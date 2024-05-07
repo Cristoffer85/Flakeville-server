@@ -1,0 +1,83 @@
+{
+	"info": {
+		"_postman_id": "661f68a2-bf0e-4745-aea2-f9ca915d5764",
+		"name": "Employee",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29284507"
+	},
+	"item": [
+		{
+			"name": "Get One Employee",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiUGVsbGUxIiwiaWF0IjoxNzEzNzg1MTk5LCJyb2xlcyI6IlVTRVIifQ.nScnqKHP50YLhk2PPiK0US05Qz0Z9-0uE25uWS-zB67Q-QvTiJSvoC2ifG5f2L5rZ9U_T6eAQ9CThEI79Mf3UZkifpl3U0joFoBuX6CSE7ZKLz-vyFDuNRJjJ5Xy7mepJcWzygSuUiZ939CW4dXt0qIdBI7tcQ1Lwc0IZjVfITa3uJqVE7cLq6JosDashh5sy7zJem-tCJ7oOjOKUuFQ2c4BtB2xiuBiwegFZLcGonk0L1X_JCXACgMpROTKMOgGKyFKOkYAuuQcDcYJjYOmDeyrGK1gksmjsj-Uq1Bu15SWXfxueMXMT2_j9CVhq_IFhYyYKVTfXxnIKH_5YWnnPA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/employee/getOneEmployee/{username}",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"employee",
+						"getOneEmployee",
+						"{username}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Employee",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiam9obmRvZTEiLCJpYXQiOjE3MTM4NjMzMjAsInJvbGVzIjoiRU1QTE9ZRUUifQ.TcumpsObcwPZcORg02iqtVxGWzTmhlRLE1RbLgRkt2-0k8RD1aNzl6ov2Q278Pg_KR897O8TxRDGJ5V5c9tTgK7DKI0T3apyFzDLmCNLeZWV-3U3tDhhRrjngB9WOH5ankBiifWoCJc9Uv0-VmNelJ0Cevs38vjvORpQJIRgGV4FTeecD-TjXOpPaZFeazBseYShWvFi5GQPft20v9viVh_Pd6kjuXim-YiPl6ccqCoWmE6Yxu_jvdK2qGy_hDvA3jgqj4--Hs9oTAHN9QFKYpEqHUZWITbqMSjceU3-uLSeGKZf3RNEXn93Vt4Pe06o_yyrFM5myyJBWY52JJ6V1w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"John Doe 11\",\r\n    \"position\": \"Software Uber Engineer 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/employee/updateEmployee/johndoe1",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"employee",
+						"updateEmployee",
+						"johndoe1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

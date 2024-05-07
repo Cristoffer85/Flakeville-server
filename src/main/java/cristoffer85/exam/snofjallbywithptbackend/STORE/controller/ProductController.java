@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/products")
-@CrossOrigin("*")
 public class ProductController {
 
     @Autowired

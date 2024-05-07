@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "330cc482-8781-4bf2-ae5f-98873111cb4c",
+		"name": "Admin /Employees",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29284507"
+	},
+	"item": [
+		{
+			"name": "Get All Employees",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/admin/getAllEmployees",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"admin",
+						"getAllEmployees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One Employee",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MTIzMzMxOTYsInJvbGVzIjoiQURNSU4ifQ.VhVwri75wWVry0F9zfoZxDPKvppDa1pmWymhYe3ZvW32qAMQNVBXQEaKPj4LPK4P_CGhwxYqP2_6wL2IwMEWtjZ89hL9Kcl4fvvQAN2KJtB7EFUIEDETwuQB5rxfVrh0tfbuVekXXR6uhJI60zenCD2gVLBnn0Q1tGsFVWg3UCL7FxJkkwqvb8A1uyqqd0poas2UAcwlFD_tgVMEFdnktvAe1cbHQLs0tsIgFzdpZwVH9DBQNSF-XYORpQDCmyzhFff67j9yQIumlpbwIRSgi8zGTbmeIi0liRMGWbzIUDNNT81WkDT9EfabDGOtW8TcN5VGdd-6aFx7wF8i4NHhIg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/getOneEmployee/johndoe2",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"getOneEmployee",
+						"johndoe2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Employee",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MTQ1OTA1MjIsInJvbGVzIjoiQURNSU4ifQ.g1QLvBecezXoDndjBKir48RKp7-jK-Uc-s4RfqnwBdJoDMHyrCvYVZn50MuJHIKYQxStUt6HGZp1RaouTzgq04FcDLrIauIRgLqH9SBcnh-kwaoLbGWk_IhCPGT7SQF1wld4MIcaH2hVWGarELw-7rDElw4aK-u_17_UKZN2Wt_IpgyaH7okSgXvPmFHrc9_2WhuhrR-L-5CpZKtF9gVoCr2TTW3hqf1ciwACZI2nwvm-S1KyvFMnJEMDebeRe-HmMvB8tNgHOLRu6sgOZxYMyRbEkackdLrx38jHmbkVouGypceV_edUoBfhKYl4TJmUlKXcswDkOmUQc39ztp4pw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"John Doe1\",\r\n  \"position\": \"Software Engineer\",\r\n  \"username\": \"johndoe1\",\r\n  \"password\": \"password1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/admin/createEmployee",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"admin",
+						"createEmployee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Employee",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MTM4NjI2NzgsInJvbGVzIjoiQURNSU4ifQ.hhoOOmGdtPv8Fp5Cok88HF6Ywcs3PbkMu1tr3W_Id0E5lDFPEyZIrnnQ2CA0LxmfEHW4HIhtH0qHeQ9buEl49xbmZ2LcadPRB_-KG3NAr-vpk3P2VHJx5yhFET236NEUcI8ldBkokhRgumqSnF3Q0b6nrrOf9WiAVkgQ0AJyxM0B5Vm_FqzM_A0IVdyopz5fDGChlHqintgIZJGMMomeazsejZLrZXroCzDOfQmTUMa6VTWMNzXjxkIOkADT3J9k5e-kVYglOeBw-S43slnCYJWb8J6Lw7nBMwqlqjtY1eRq2t-1RVakyXtkI1axYNjJAETzA6j0GSsBK5XvMb5H8Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"John Doe 22\",\r\n    \"position\": \"Software Uber Engineer\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/admin/updateEmployee/johndoe2",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"admin",
+						"updateEmployee",
+						"johndoe2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Employee",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MTIzMzM4NjMsInJvbGVzIjoiQURNSU4ifQ.XNI54cQVunCoeSA-uNHJhIBJRVLhdDz4xqq02BYS0cuSdXacxuZaLG88V6PtstvEPlDR439BS4Txm5fabJHv-_ELKS1jRrpxAHkPDndD8jKxDCOVsEQIZIwHreO9eXX7vA-ZpBQBjKcWNZyMeqh7m_vGFbtAEJFWvwSeTDtRH3fWLvoBvgYYrt5F6SFzSOOKbO-VxpwLYtHK7sQT4bEW8KFcM5g_vp2s332T0qJMfXMOXOweDUYR-Lle8uaVzRISp5pNs1dmoMx9l9CxxPlnBtlVAYt7dlkr87cbZQKlWwY-F2w-USM70fnsQIeWfcKihVwARNFo4BOeH2ApNP5pKQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/admin/deleteEmployee/johndoe2",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"admin",
+						"deleteEmployee",
+						"johndoe2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

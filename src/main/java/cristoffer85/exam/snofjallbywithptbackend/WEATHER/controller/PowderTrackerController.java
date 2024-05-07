@@ -10,7 +10,6 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/skiResort")
-@CrossOrigin("*")
 public class PowderTrackerController {
 
     private final PowderTrackerService powderTrackerService;

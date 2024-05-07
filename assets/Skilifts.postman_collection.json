@@ -1,0 +1,105 @@
+{
+	"info": {
+		"_postman_id": "f203c5f0-d628-4036-9d28-1211cd4521db",
+		"name": "Skilifts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29284507"
+	},
+	"item": [
+		{
+			"name": "Start Lift",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MTUwNjkwMzIsInJvbGVzIjoiQURNSU4ifQ.ZPWU3LP0LTWKPXQabX930WucsSwvr47vglbJrrdta-ohvVf8KJuww2ppikYGh7-obZeydeSuyKGLV6wUXamVo27hYfGKZkwLp59GpkIXRmSP0XlZKC8QxZU1oAvwiEDTqYW1_qNg7bBiuSgp7MT0YxfwGB6JDaIpZRQusq42vvToTFU3RFXexIA9avLrpoSX3wkjuaHWyUrwzI2bm_c1PtWzo3rj41fRnS3KME3RcOzphLnCA1S9cEQnwnjvNhBjRO3jmQvvsjdKw66nnH6ydNqSyQ01s6qiKZgKpBmq8PIje7cWQttOEQb9OR-k44_Z1RyRrRVhKKyu32vl2qTMDA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/skilifts/startLift/1",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"skilifts",
+						"startLift",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stop Lift",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MTUwNjkwMzIsInJvbGVzIjoiQURNSU4ifQ.ZPWU3LP0LTWKPXQabX930WucsSwvr47vglbJrrdta-ohvVf8KJuww2ppikYGh7-obZeydeSuyKGLV6wUXamVo27hYfGKZkwLp59GpkIXRmSP0XlZKC8QxZU1oAvwiEDTqYW1_qNg7bBiuSgp7MT0YxfwGB6JDaIpZRQusq42vvToTFU3RFXexIA9avLrpoSX3wkjuaHWyUrwzI2bm_c1PtWzo3rj41fRnS3KME3RcOzphLnCA1S9cEQnwnjvNhBjRO3jmQvvsjdKw66nnH6ydNqSyQ01s6qiKZgKpBmq8PIje7cWQttOEQb9OR-k44_Z1RyRrRVhKKyu32vl2qTMDA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/skilifts/stopLift/1",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"skilifts",
+						"stopLift",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Skilift Logs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MTUwNjkwMzIsInJvbGVzIjoiQURNSU4ifQ.ZPWU3LP0LTWKPXQabX930WucsSwvr47vglbJrrdta-ohvVf8KJuww2ppikYGh7-obZeydeSuyKGLV6wUXamVo27hYfGKZkwLp59GpkIXRmSP0XlZKC8QxZU1oAvwiEDTqYW1_qNg7bBiuSgp7MT0YxfwGB6JDaIpZRQusq42vvToTFU3RFXexIA9avLrpoSX3wkjuaHWyUrwzI2bm_c1PtWzo3rj41fRnS3KME3RcOzphLnCA1S9cEQnwnjvNhBjRO3jmQvvsjdKw66nnH6ydNqSyQ01s6qiKZgKpBmq8PIje7cWQttOEQb9OR-k44_Z1RyRrRVhKKyu32vl2qTMDA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/skilifts/getAllLifts",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"skilifts",
+						"getAllLifts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

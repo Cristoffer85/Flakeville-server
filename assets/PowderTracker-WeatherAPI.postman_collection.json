@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "5e84cca8-dc2a-4c65-a466-c4c1c825e860",
+		"name": "PowderTracker-WeatherAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29284507"
+	},
+	"item": [
+		{
+			"name": "Get Current Weather Conditions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/skiResort/currentConditions",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"skiResort",
+						"currentConditions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Hourly Condition",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/skiResort/hourlyConditions",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"skiResort",
+						"hourlyConditions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get 5Day Condition",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/skiResort/5DayConditions",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"skiResort",
+						"5DayConditions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

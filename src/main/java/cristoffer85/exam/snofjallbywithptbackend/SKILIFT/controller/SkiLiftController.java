@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/skilifts")
-@CrossOrigin("*")
 public class SkiLiftController {
 
     @Autowired

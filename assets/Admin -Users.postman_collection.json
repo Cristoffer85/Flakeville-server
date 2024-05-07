@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "dad0120a-5104-4b49-a627-8ed2d540d170",
+		"name": "Admin /Users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29284507"
+	},
+	"item": [
+		{
+			"name": "Get All Users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MTIzMjkwNTksInJvbGVzIjoiQURNSU4ifQ.VSnp7nyb3Rq5e9YOOgUIunf4h1BR2iseumrgLIibzJ-nICK0WOFwzsC-waFbiMWUALOOgMdhyVd8MOw_XdXqhzgoeHuT0ShBalrIp4G53TzzhRHZbJpMomRbPMTifG5xsg6P992K_odTWmTuStQzCuIaZTMJW5RrGMoITcOvSVndSw0K7lux-DmME_A_xPuAytX7YHjUtQP3aMQvRrgOdnVvARMwcy2u6RHtDrL82w43P8Nrxdugxip4NN-Ai44AdNghScHhAoEH4WyBpmI6IcALCCvf6Lfi2L4NMBitaZz6NITcTPJdhgSw9HaHM31l4TZoQs4drtcd29EAIEz03A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/admin/getAllUsers",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"admin",
+						"getAllUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MTIzMjk5MjEsInJvbGVzIjoiQURNSU4ifQ.K3T8C36-hqOJNWoU2jsdR4bQFSFyWnobLfhYg7EHwBp8sVorqH4jWw804j5ykN6uJ2faCqAKQns38wRyvR_l8Wk-V3us6S3iVx7AiF6Bfvq75cfLtyOc1Ll5m0pQbLe0yfDP2jT_WKbQasSFxY6TdHbx5DCIWDB9RdDyP0UDInmQCmVsr9wR_8ZxqVs8vqg692WQkaeM-U_qi6K8aV1KJ55PW-pRWscWlfBYcL4zeo0fh-lD_Lx51L9GKCrfq8Tz4WEqbb13Oqf1-d_I5PLQ-ya0RTzWw6ImsjE6VzaWrz5FnqhFH0aKfxdqq9rphtcVYttM3oQdozAz8zMebP0gxw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/admin/getOneUser/Pelle4",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"admin",
+						"getOneUser",
+						"Pelle4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiUGVsbGUxIiwiaWF0IjoxNzEzNzg1MTk5LCJyb2xlcyI6IlVTRVIifQ.nScnqKHP50YLhk2PPiK0US05Qz0Z9-0uE25uWS-zB67Q-QvTiJSvoC2ifG5f2L5rZ9U_T6eAQ9CThEI79Mf3UZkifpl3U0joFoBuX6CSE7ZKLz-vyFDuNRJjJ5Xy7mepJcWzygSuUiZ939CW4dXt0qIdBI7tcQ1Lwc0IZjVfITa3uJqVE7cLq6JosDashh5sy7zJem-tCJ7oOjOKUuFQ2c4BtB2xiuBiwegFZLcGonk0L1X_JCXACgMpROTKMOgGKyFKOkYAuuQcDcYJjYOmDeyrGK1gksmjsj-Uq1Bu15SWXfxueMXMT2_j9CVhq_IFhYyYKVTfXxnIKH_5YWnnPA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"Pelle5\",\r\n  \"password\": \"password1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/admin/createUser",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"admin",
+						"createUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\":\"\",\r\n\"password\":\"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/admin/updateUser/Pelle4",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"admin",
+						"updateUser",
+						"Pelle4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://snofjallbyservice-snofjallbywithpt.azuremicroservices.io/admin/deleteOneUser/",
+					"protocol": "https",
+					"host": [
+						"snofjallbyservice-snofjallbywithpt",
+						"azuremicroservices",
+						"io"
+					],
+					"path": [
+						"admin",
+						"deleteOneUser",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
