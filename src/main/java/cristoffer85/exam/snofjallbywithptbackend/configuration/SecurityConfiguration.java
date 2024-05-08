@@ -58,7 +58,7 @@ public class SecurityConfiguration {                    // Class responsible for
 
                     // --------------------------- PERMITTED FOR ALL --------------------------------
                     // = All users have access to /auth/** and /skiResort/** endpoints
-                    auth.requestMatchers("/auth/**", "/skiResort/**", "/products/getAllProducts", "/products/getOneProduct/{id}", "/products/category/{category}").permitAll();
+                    auth.requestMatchers("/auth/**", "/skiResort/**", "/products/getAllProducts", "/products/getOneProduct/{id}", "/products/category/{category}", "skilifts/getAllLifts").permitAll();
 
                     // --------------------------- ROLE ENDPOINTS --------------------------------
                     // = ADMIN is the only role with access to /admin/** endpoint
@@ -76,7 +76,7 @@ public class SecurityConfiguration {                    // Class responsible for
 
                     // --------------------------- SKILIFT MANAGEMENT --------------------------------
                     // = ADMIN and EMPLOYEE are only roles with access to /skilifts/** endpoint
-                    auth.requestMatchers("/skilifts/**").hasAnyRole("ADMIN", "EMPLOYEE");
+                    auth.requestMatchers("/skilifts/startLift/", "/skilifts/stopLift/").hasAnyRole("ADMIN", "EMPLOYEE");
 
                     auth.anyRequest().authenticated();
                 });
