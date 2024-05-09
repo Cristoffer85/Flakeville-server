@@ -34,7 +34,7 @@ public class PowderTrackerService {
         String apiKey = "794f149884fe6112fc95454ea8bda6b3";
         double lat = 13.27;
         double lon = 61.16;
-        String url = String.format("https://api.openweathermap.org/data/2.5/forecast?lat=%f&lon=%f&appid=%s", lat, lon, apiKey);
+        String url = String.format("https://api.openweathermap.org/data/2.5/forecast?lat=%f&lon=%f&appid=%s&units=metric", lat, lon, apiKey);
 
         Request request = new Request.Builder()
                 .url(url)
