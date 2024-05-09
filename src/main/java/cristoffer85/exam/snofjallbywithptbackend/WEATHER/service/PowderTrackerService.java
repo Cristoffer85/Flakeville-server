@@ -30,27 +30,15 @@ public class PowderTrackerService {
         }
     }
 
-    /*
-    public String getHourlyConditions() throws IOException {
-        Request request = new Request.Builder()
-                .url("https://ski-resort-forecast.p.rapidapi.com/Salen/hourly?units=m&el=top&c=true")
-                .get()
-                .addHeader("X-RapidAPI-Key", "71467c3251mshe7a05d529b2b97bp1973c1jsn4f20d53a2d86")
-                .addHeader("X-RapidAPI-Host", "ski-resort-forecast.p.rapidapi.com")
-                .build();
-
-        try (Response response = client.newCall(request).execute()) {
-            assert response.body() != null;
-            return response.body().string();
-        }
-    }
-
     public String get5DayConditions() throws IOException {
+        String apiKey = "794f149884fe6112fc95454ea8bda6b3";
+        double lat = 13.27;
+        double lon = 61.16;
+        String url = String.format("https://api.openweathermap.org/data/2.5/forecast?lat=%f&lon=%f&appid=%s", lat, lon, apiKey);
+
         Request request = new Request.Builder()
-                .url("https://ski-resort-forecast.p.rapidapi.com/Salen/forecast?units=m&el=top")
+                .url(url)
                 .get()
-                .addHeader("X-RapidAPI-Key", "71467c3251mshe7a05d529b2b97bp1973c1jsn4f20d53a2d86")
-                .addHeader("X-RapidAPI-Host", "ski-resort-forecast.p.rapidapi.com")
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
@@ -58,5 +46,4 @@ public class PowderTrackerService {
             return response.body().string();
         }
     }
-    */
 }

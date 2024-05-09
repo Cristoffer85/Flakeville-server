@@ -1,34 +1,11 @@
-Current WeatherAPI (from RapidAPI) is from to https://rapidapi.com/joeykyber/api/ski-resort-forecast
+API Location set to Salen, Sweden, Latitude: 13.27 Longitude: 61.16
+(which is very close to home and origin-child for me)
 
-which right now is set to Lindvallen, Sweden (which is very close to home and child-heart for me)
-and in metrics and show both current, hourly (limited to one day) and a 5 day forecast.
+Current Weather (from RapidAPI) is from to https://rapidapi.com/joeykyber/api/ski-resort-forecast
 
-The API has responses etc like:
+#########################################################################
 
-forecast:[
-        {
-        summary:"light rain"
-        windSpeed:"35km/h"
-        windDirection:"SW"
-        snow:"0cm"
-        rain:"2.0mm"
-        maxTemp:"5°C"
-        minTemp:"5°C"
-        windChill:"-2°C"
-        humidity:"89%"
-        freezeLevel:"2000m"
-        }
-        ]
+5Day Forecast (from OpenWeatherMap) is from https://openweathermap.org/forecast5
 
-basicInfo:{
-        region:"Sweden"
-        name:"Sälen"
-        url:"https://www.snow-forecast.com/resorts/Salen/6day/top"
-        topLiftElevation:"890m"
-        midLiftElevation:"620m"
-        botLiftElevation:"350m"
-        lat:"61.16"
-        lon:"13.27"
-        }
-
-(API is also totally free with no requestlimit so feel free to request on!)
+Had to split the API calls into two different sources since the first choice from RapidAPI wasnt as stable as I first anticipated.
+It crashed alot when making to many calls in a short time, so I had to find another source for the 5Day Forecast.
