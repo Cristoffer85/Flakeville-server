@@ -88,4 +88,4 @@ Guest (User), can:
 
 
 ## Tests
-JUNit tests are located in the test folder and can be run from there. Covering every controller and service class.
+JUNit tests are located in the test folder and can be run from there. Covering every service class.
