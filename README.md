@@ -21,6 +21,13 @@ In the creation and nagging of following both the TRAP-plan (In swedish)
 
 I learned <u>alot</u> about endpoints, http-requests and common work about how connection between a server and a client works, which was for me very grateful.
 
+## Architecture
+Brief architecture overview of the application can be viewed here
+
+<p align="center">
+<img src="src/main/resources/UML Diagram.jpg"/>
+</p>
+
 ## Installation
 
 1. Clone the repository
@@ -29,13 +36,6 @@ I learned <u>alot</u> about endpoints, http-requests and common work about how c
 ```spring.data.mongodb.uri=${MONGODB_URI:mongodb://localhost:27017/<your database name>}``` the MONGODB_URI is a environment variable that you can set in your IDE or in your deployment environment. By default if the MONGODB_URI is not set, it will use the local MongoDB database.
 3. In configuration package -> OriginConfiguration change the * in ```.allowedOrigins("*")````to your own client URL (if you have one, otherwise keep as * or change to localhost:8080 if you wish to test it locally.
 4. Run the application in your IDE or (quick-cheat) here: ```mvn spring-boot:run```
-
-## Architecture
-Brief architecture overview of the application can be viewed here
-
-<p align="center">
-<img src="src/main/resources/UML Diagram.jpg"/>
-</p>
 
 ## Usage
 
