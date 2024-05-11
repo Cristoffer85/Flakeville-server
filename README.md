@@ -21,6 +21,13 @@ In the creation and nagging of following both the TRAP-plan (In swedish)
 
 I learned <u>alot</u> about endpoints, http-requests and common work about how connection between a server and a client works, which was for me very grateful.
 
+## Architecture
+Brief architecture overview of the application can be viewed here
+
+<p align="center">
+<img src="src/main/resources/UML Diagram.jpg"/>
+</p>
+
 ## Installation
 
 1. Clone the repository
