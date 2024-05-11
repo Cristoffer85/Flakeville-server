@@ -1,7 +1,4 @@
 TODO:
-* ReWrite now faulty tests (because refactoring) for some classes and add some more tests for other classes (available and doable Controllers and Services = done)
-
-
 
 DONE:
 * Implement good Weather (Snow, mostly) API in backend
@@ -14,3 +11,4 @@ DONE:
 * Previous TO:DO implements much of this question too, alot of the logic are in the controllers, not much in services.
   Maybe need to check that over more
 * Plan out what data (and how) shall be taken from the weather API, and how it shall be viewed
+* ReWrite now faulty tests (because refactoring) for some classes and add some more tests for other classes (available and doable Controllers and Services = done)
