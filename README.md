@@ -90,7 +90,7 @@ ADMIN, can:
 EMPLOYEE, can:
 * Login, handle every CRUD functionality for every product in Store, Ski Lift operations and some personal data.
 
-Guest (User), can:
+GUEST (User), can:
 * Sign up, Login, Book a stay, Rent equipment, Book ski lessons, View previous orders and total cost, See current weather and snow conditions, manage some of its personal data.
 
 
