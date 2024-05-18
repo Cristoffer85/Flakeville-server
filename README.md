@@ -31,7 +31,7 @@ Brief architecture overview of the application can be viewed here
 ## Installation
 
 1. Clone the repository
-```https://github.com/Cristoffer85/SnofjallbyWithPT-Backend``` from Github
+```https://github.com/Cristoffer85/Flakeville-server``` from Github
 2. In application.properties, change the following to your own settings:
 ```spring.data.mongodb.uri=${MONGODB_URI:mongodb://localhost:27017/<your database name>}``` the MONGODB_URI is a environment variable that you can set in your IDE or in your deployment environment. By default if the MONGODB_URI is not set, it will use the local MongoDB database.
 3. In configuration package -> OriginConfiguration change the * in ```.allowedOrigins("*")````to your own client URL (if you have one, otherwise keep as * or change to localhost:8080 if you wish to test it locally.
@@ -39,7 +39,7 @@ Brief architecture overview of the application can be viewed here
 
 ## Usage
 
-For use of this application (without client, which is located at ```https://github.com/Cristoffer85/SnofjallbyWithPT-Frontend```)
+For use of this application (without client, which is located at ```https://github.com/Cristoffer85/Flakeville-client```)
 you can use POSTMAN or similar API testing tool to test the endpoints.
 
 The following are exported collection-data from Postman (click, open and view every JSON file in raw mode to get the data, then import in Postman.  
