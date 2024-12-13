@@ -1,4 +1,4 @@
-package cristoffer85.exam.snofjallbywithptbackend;
+package cristoffer85.exam.flakevilleserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
