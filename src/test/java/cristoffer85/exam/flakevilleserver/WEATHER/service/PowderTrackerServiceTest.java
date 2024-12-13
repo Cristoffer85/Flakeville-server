@@ -1,4 +1,4 @@
-package cristoffer85.exam.snofjallbywithptbackend.WEATHER.service;
+package cristoffer85.exam.flakevilleserver.WEATHER.service;
 
 import okhttp3.*;
 import org.junit.jupiter.api.Test;

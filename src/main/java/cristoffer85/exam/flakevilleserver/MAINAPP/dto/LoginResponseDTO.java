@@ -1,6 +1,6 @@
-package cristoffer85.exam.snofjallbywithptbackend.MAINAPP.dto;
+package cristoffer85.exam.flakevilleserver.MAINAPP.dto;
 
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.Role;
+import cristoffer85.exam.flakevilleserver.MAINAPP.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

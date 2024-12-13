@@ -1,7 +1,7 @@
-package cristoffer85.exam.snofjallbywithptbackend.MAINAPP.service;
+package cristoffer85.exam.flakevilleserver.MAINAPP.service;
 
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.Employee;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.EmployeeRepository;
+import cristoffer85.exam.flakevilleserver.MAINAPP.model.Employee;
+import cristoffer85.exam.flakevilleserver.MAINAPP.repository.EmployeeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

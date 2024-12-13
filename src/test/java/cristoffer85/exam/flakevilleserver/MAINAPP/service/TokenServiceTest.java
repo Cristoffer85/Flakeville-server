@@ -1,4 +1,4 @@
-package cristoffer85.exam.snofjallbywithptbackend.MAINAPP.service;
+package cristoffer85.exam.flakevilleserver.MAINAPP.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

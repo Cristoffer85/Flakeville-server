@@ -1,9 +1,10 @@
-package cristoffer85.exam.snofjallbywithptbackend.MAINAPP.controller;
+package cristoffer85.exam.flakevilleserver.MAINAPP.controller;
 
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.dto.LoginResponseDTO;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.dto.RegistrationDTO;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.User;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.service.AuthenticationService;
+import cristoffer85.exam.flakevilleserver.MAINAPP.dto.LoginResponseDTO;
+import cristoffer85.exam.flakevilleserver.MAINAPP.dto.RegistrationDTO;
+import cristoffer85.exam.flakevilleserver.MAINAPP.model.User;
+import cristoffer85.exam.flakevilleserver.MAINAPP.service.AuthenticationService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

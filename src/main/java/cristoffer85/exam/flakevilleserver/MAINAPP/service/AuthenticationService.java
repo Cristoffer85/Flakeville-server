@@ -1,16 +1,15 @@
-package cristoffer85.exam.snofjallbywithptbackend.MAINAPP.service;
+package cristoffer85.exam.flakevilleserver.MAINAPP.service;
 
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.dto.LoginResponseDTO;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.Admin;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.Employee;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.Role;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.User;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.AdminRepository;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.EmployeeRepository;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.RoleRepository;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.UserRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import cristoffer85.exam.flakevilleserver.MAINAPP.dto.LoginResponseDTO;
+import cristoffer85.exam.flakevilleserver.MAINAPP.model.Admin;
+import cristoffer85.exam.flakevilleserver.MAINAPP.model.Employee;
+import cristoffer85.exam.flakevilleserver.MAINAPP.model.Role;
+import cristoffer85.exam.flakevilleserver.MAINAPP.model.User;
+import cristoffer85.exam.flakevilleserver.MAINAPP.repository.AdminRepository;
+import cristoffer85.exam.flakevilleserver.MAINAPP.repository.EmployeeRepository;
+import cristoffer85.exam.flakevilleserver.MAINAPP.repository.RoleRepository;
+import cristoffer85.exam.flakevilleserver.MAINAPP.repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -30,7 +29,6 @@ import java.util.UUID;
 @Service
 @Transactional
 public class AuthenticationService {                // Class that handles Registration of new user and employee, and login (Authenticates that they are valid) Uses LoginResponseDTO among others
-    private static final Logger logger = LoggerFactory.getLogger(AuthenticationService.class);
 
     @Autowired
     private UserRepository userRepository;

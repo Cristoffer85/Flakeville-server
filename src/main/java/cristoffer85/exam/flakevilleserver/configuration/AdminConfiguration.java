@@ -1,9 +1,9 @@
-package cristoffer85.exam.snofjallbywithptbackend.configuration;
+package cristoffer85.exam.flakevilleserver.configuration;
 
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.Admin;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.Role;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.AdminRepository;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.RoleRepository;
+import cristoffer85.exam.flakevilleserver.MAINAPP.model.Admin;
+import cristoffer85.exam.flakevilleserver.MAINAPP.model.Role;
+import cristoffer85.exam.flakevilleserver.MAINAPP.repository.AdminRepository;
+import cristoffer85.exam.flakevilleserver.MAINAPP.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;

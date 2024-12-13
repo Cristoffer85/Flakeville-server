@@ -1,4 +1,4 @@
-package cristoffer85.exam.snofjallbywithptbackend.MAINAPP.utils;
+package cristoffer85.exam.flakevilleserver.MAINAPP.utils;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;

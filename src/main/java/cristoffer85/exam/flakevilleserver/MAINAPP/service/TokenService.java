@@ -1,4 +1,4 @@
-package cristoffer85.exam.snofjallbywithptbackend.MAINAPP.service;
+package cristoffer85.exam.flakevilleserver.MAINAPP.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

@@ -1,7 +1,7 @@
-package cristoffer85.exam.snofjallbywithptbackend.STORE.service;
+package cristoffer85.exam.flakevilleserver.STORE.service;
 
-import cristoffer85.exam.snofjallbywithptbackend.STORE.model.Product;
-import cristoffer85.exam.snofjallbywithptbackend.STORE.repository.ProductRepository;
+import cristoffer85.exam.flakevilleserver.STORE.model.Product;
+import cristoffer85.exam.flakevilleserver.STORE.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;

@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SnofjallbyWithPtBackendApplication {
+public class FlakevilleserverMain {
 
     public static void main(String[] args) {
-        SpringApplication.run(SnofjallbyWithPtBackendApplication.class, args);
+        SpringApplication.run(FlakevilleserverMain.class, args);
     }
 
 }

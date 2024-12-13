@@ -1,7 +1,7 @@
-package cristoffer85.exam.snofjallbywithptbackend.STORE.controller;
+package cristoffer85.exam.flakevilleserver.STORE.controller;
 
-import cristoffer85.exam.snofjallbywithptbackend.STORE.model.Product;
-import cristoffer85.exam.snofjallbywithptbackend.STORE.service.ProductService;
+import cristoffer85.exam.flakevilleserver.STORE.model.Product;
+import cristoffer85.exam.flakevilleserver.STORE.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

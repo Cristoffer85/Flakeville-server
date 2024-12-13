@@ -1,11 +1,11 @@
-package cristoffer85.exam.snofjallbywithptbackend.MAINAPP.service;
+package cristoffer85.exam.flakevilleserver.MAINAPP.service;
 
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.dto.UserUpdateDTO;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.User;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.UserRepository;
-import cristoffer85.exam.snofjallbywithptbackend.STORE.model.Order;
-import cristoffer85.exam.snofjallbywithptbackend.STORE.model.Product;
-import cristoffer85.exam.snofjallbywithptbackend.STORE.model.ProductQuantity;
+import cristoffer85.exam.flakevilleserver.MAINAPP.dto.UserUpdateDTO;
+import cristoffer85.exam.flakevilleserver.MAINAPP.model.User;
+import cristoffer85.exam.flakevilleserver.MAINAPP.repository.UserRepository;
+import cristoffer85.exam.flakevilleserver.STORE.model.Order;
+import cristoffer85.exam.flakevilleserver.STORE.model.Product;
+import cristoffer85.exam.flakevilleserver.STORE.model.ProductQuantity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

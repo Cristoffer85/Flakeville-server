@@ -1,4 +1,4 @@
-package cristoffer85.exam.snofjallbywithptbackend.SKILIFT.model;
+package cristoffer85.exam.flakevilleserver.SKILIFT.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

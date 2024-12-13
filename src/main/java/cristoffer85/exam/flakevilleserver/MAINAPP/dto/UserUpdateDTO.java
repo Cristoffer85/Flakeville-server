@@ -1,4 +1,4 @@
-package cristoffer85.exam.snofjallbywithptbackend.MAINAPP.dto;
+package cristoffer85.exam.flakevilleserver.MAINAPP.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

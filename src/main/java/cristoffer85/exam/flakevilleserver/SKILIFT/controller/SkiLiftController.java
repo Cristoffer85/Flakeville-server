@@ -1,7 +1,7 @@
-package cristoffer85.exam.snofjallbywithptbackend.SKILIFT.controller;
+package cristoffer85.exam.flakevilleserver.SKILIFT.controller;
 
-import cristoffer85.exam.snofjallbywithptbackend.SKILIFT.model.SkiLift;
-import cristoffer85.exam.snofjallbywithptbackend.SKILIFT.service.SkiLiftService;
+import cristoffer85.exam.flakevilleserver.SKILIFT.model.SkiLift;
+import cristoffer85.exam.flakevilleserver.SKILIFT.service.SkiLiftService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

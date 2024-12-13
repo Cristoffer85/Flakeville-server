@@ -1,4 +1,4 @@
-package cristoffer85.exam.snofjallbywithptbackend.MAINAPP.dto;
+package cristoffer85.exam.flakevilleserver.MAINAPP.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,8 +1,8 @@
-package cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model;
+package cristoffer85.exam.flakevilleserver.MAINAPP.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import cristoffer85.exam.snofjallbywithptbackend.STORE.model.Order;
+import cristoffer85.exam.flakevilleserver.STORE.model.Order;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;

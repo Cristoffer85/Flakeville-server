@@ -1,6 +1,6 @@
-package cristoffer85.exam.snofjallbywithptbackend.SKILIFT.repository;
+package cristoffer85.exam.flakevilleserver.SKILIFT.repository;
 
-import cristoffer85.exam.snofjallbywithptbackend.SKILIFT.model.SkiLift;
+import cristoffer85.exam.flakevilleserver.SKILIFT.model.SkiLift;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

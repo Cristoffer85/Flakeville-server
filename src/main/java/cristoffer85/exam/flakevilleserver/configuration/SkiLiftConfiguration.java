@@ -1,7 +1,7 @@
-package cristoffer85.exam.snofjallbywithptbackend.configuration;
+package cristoffer85.exam.flakevilleserver.configuration;
 
-import cristoffer85.exam.snofjallbywithptbackend.SKILIFT.model.SkiLift;
-import cristoffer85.exam.snofjallbywithptbackend.SKILIFT.repository.SkiLiftRepository;
+import cristoffer85.exam.flakevilleserver.SKILIFT.model.SkiLift;
+import cristoffer85.exam.flakevilleserver.SKILIFT.repository.SkiLiftRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

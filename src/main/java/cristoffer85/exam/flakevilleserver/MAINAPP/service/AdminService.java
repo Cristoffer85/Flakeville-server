@@ -1,11 +1,11 @@
-package cristoffer85.exam.snofjallbywithptbackend.MAINAPP.service;
+package cristoffer85.exam.flakevilleserver.MAINAPP.service;
 
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.dto.RegistrationDTO;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.dto.UserUpdateDTO;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.Employee;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.User;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.EmployeeRepository;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.UserRepository;
+import cristoffer85.exam.flakevilleserver.MAINAPP.dto.RegistrationDTO;
+import cristoffer85.exam.flakevilleserver.MAINAPP.dto.UserUpdateDTO;
+import cristoffer85.exam.flakevilleserver.MAINAPP.model.Employee;
+import cristoffer85.exam.flakevilleserver.MAINAPP.model.User;
+import cristoffer85.exam.flakevilleserver.MAINAPP.repository.EmployeeRepository;
+import cristoffer85.exam.flakevilleserver.MAINAPP.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

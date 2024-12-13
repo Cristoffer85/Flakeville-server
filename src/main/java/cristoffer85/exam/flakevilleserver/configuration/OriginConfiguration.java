@@ -1,4 +1,4 @@
-package cristoffer85.exam.snofjallbywithptbackend.configuration;
+package cristoffer85.exam.flakevilleserver.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

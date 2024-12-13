@@ -1,6 +1,6 @@
-package cristoffer85.exam.snofjallbywithptbackend.STORE.service;
+package cristoffer85.exam.flakevilleserver.STORE.service;
 
-import cristoffer85.exam.snofjallbywithptbackend.STORE.model.ProductIDGenerator;
+import cristoffer85.exam.flakevilleserver.STORE.model.ProductIDGenerator;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;

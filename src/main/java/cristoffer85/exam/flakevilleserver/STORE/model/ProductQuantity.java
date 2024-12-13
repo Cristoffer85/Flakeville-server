@@ -1,4 +1,4 @@
-package cristoffer85.exam.snofjallbywithptbackend.STORE.model;
+package cristoffer85.exam.flakevilleserver.STORE.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

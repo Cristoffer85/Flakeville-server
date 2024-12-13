@@ -1,4 +1,4 @@
-package cristoffer85.exam.snofjallbywithptbackend.configuration;
+package cristoffer85.exam.flakevilleserver.configuration;
 
 import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.JWKSet;
@@ -6,7 +6,7 @@ import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.utils.RSAKeyProperties;
+import cristoffer85.exam.flakevilleserver.MAINAPP.utils.RSAKeyProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

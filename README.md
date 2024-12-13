@@ -93,6 +93,9 @@ EMPLOYEE, can:
 GUEST (User), can:
 * Sign up, Login, Book a stay, Rent equipment, Book ski lessons, View previous orders and total cost, See current weather and snow conditions, manage some of its personal data.
 
+## Security
+Connection String to MongoDb server is hidden in Github Codespaces - Repository Secret and working well.
 
 ## Tests
 JUNit tests are located in the test folder and can be run from there. Covering every service class.
+

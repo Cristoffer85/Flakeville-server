@@ -1,8 +1,8 @@
-package cristoffer85.exam.snofjallbywithptbackend.MAINAPP.service;
+package cristoffer85.exam.flakevilleserver.MAINAPP.service;
 
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.AdminRepository;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.EmployeeRepository;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.repository.UserRepository;
+import cristoffer85.exam.flakevilleserver.MAINAPP.repository.AdminRepository;
+import cristoffer85.exam.flakevilleserver.MAINAPP.repository.EmployeeRepository;
+import cristoffer85.exam.flakevilleserver.MAINAPP.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

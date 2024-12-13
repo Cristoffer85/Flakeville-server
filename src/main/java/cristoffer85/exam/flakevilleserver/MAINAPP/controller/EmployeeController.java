@@ -1,7 +1,7 @@
-package cristoffer85.exam.snofjallbywithptbackend.MAINAPP.controller;
+package cristoffer85.exam.flakevilleserver.MAINAPP.controller;
 
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.model.Employee;
-import cristoffer85.exam.snofjallbywithptbackend.MAINAPP.service.EmployeeService;
+import cristoffer85.exam.flakevilleserver.MAINAPP.model.Employee;
+import cristoffer85.exam.flakevilleserver.MAINAPP.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
