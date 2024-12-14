@@ -3,10 +3,11 @@ name: Java CI with Maven
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -26,7 +27,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-m2
 
+      - name: Print MONGODB_URI
+        run: echo ${{ secrets.MONGODB_URI }}
+
       - name: Build with Maven
         run: mvn -B clean package --file pom.xml
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+
+      - name: Run tests
+        run: mvn test
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
