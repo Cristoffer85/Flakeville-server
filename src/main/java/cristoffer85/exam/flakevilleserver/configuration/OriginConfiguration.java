@@ -17,3 +17,6 @@ public class OriginConfiguration implements WebMvcConfigurer {
                 .allowCredentials(true);
     }
 }
+
+
+/* REMEMBER! To check the / in CORS-config for frontend! */
