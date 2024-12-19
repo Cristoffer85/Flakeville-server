@@ -53,8 +53,8 @@ public class SecurityConfiguration {                    // Class responsible for
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> {
                 // --------------------------- PERMITTED FOR ALL --------------------------------
-                // = All users have access to /auth/**
-                auth.requestMatchers("/auth/**", "/api/**", "/skiResort/**", "/products/getAllProducts", "/products/getOneProduct/{id}", "/products/category/{category}", "/skilifts/getAllLifts").permitAll();
+                // = All users have access to /auth/**, /skiResort/**, /products/getAllProducts, /products/getOneProduct/{id}, /products/category/{category}, /skilifts/getAllLifts endpoints
+                auth.requestMatchers("/auth/**", "/skiResort/**", "/products/getAllProducts", "/products/getOneProduct/{id}", "/products/category/{category}", "/skilifts/getAllLifts").permitAll();
 
                 // --------------------------- ROLE ENDPOINTS --------------------------------
                 // = ADMIN is the only role with access to /admin/** endpoint

@@ -17,7 +17,7 @@ _______________________________________________________________________________
 # Short (CoPilot) explanation (Thought it was pretty good summarized, even how)
 
 ### Summary
-- Docker Desktop: Provides the container runtime for Minikube.
-- Minikube Start: Initializes and starts the local Kubernetes cluster.
-- Minikube Tunnel: Exposes LoadBalancer services to localhost, making RabbitMQ accessible on localhost:5672 and localhost:15672.
-- Spring Boot Configuration: Configures the application to connect to RabbitMQ on localhost.
+- ** Docker Desktop: Provides the container runtime for Minikube.
+- ** Minikube Start: Initializes and starts the local Kubernetes cluster.
+- ** Minikube Tunnel: Exposes LoadBalancer services to localhost, making RabbitMQ accessible on localhost:5672 and localhost:15672.
+- ** Spring Boot Configuration (application.properties): Configures the application to connect to RabbitMQ on localhost.
