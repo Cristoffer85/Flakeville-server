@@ -48,45 +48,38 @@ public class SecurityConfiguration {                    // Class responsible for
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable())
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(auth -> {
+                // --------------------------- PERMITTED FOR ALL --------------------------------
+                // = All users have access to /auth/**
+                auth.requestMatchers("/auth/**", "/api/**", "/skiResort/**", "/products/getAllProducts", "/products/getOneProduct/{id}", "/products/category/{category}", "/skilifts/getAllLifts").permitAll();
 
-                // Security Chain below structured, so that (Look a little closer in comments :)
+                // --------------------------- ROLE ENDPOINTS --------------------------------
+                // = ADMIN is the only role with access to /admin/** endpoint
+                auth.requestMatchers("/admin/**").hasRole("ADMIN");
 
-                .authorizeHttpRequests(auth -> {
+                // = ADMIN and EMPLOYEE are only roles with access to /employee/** endpoint
+                auth.requestMatchers("/employee/**").hasAnyRole("ADMIN", "EMPLOYEE");
 
-                    // --------------------------- PERMITTED FOR ALL --------------------------------
-                    // = All users have access to /auth/** and /skiResort/** endpoints
-                    auth.requestMatchers("/auth/**", "/skiResort/**", "/products/getAllProducts", "/products/getOneProduct/{id}", "/products/category/{category}", "/skilifts/getAllLifts").permitAll();
+                // = ADMIN, EMPLOYEE and USER are only roles with access to /user/** endpoint
+                auth.requestMatchers("/user/**").hasAnyRole("ADMIN", "EMPLOYEE", "USER");
 
-                    // --------------------------- ROLE ENDPOINTS --------------------------------
-                    // = ADMIN is the only role with access to /admin/** endpoint
-                    auth.requestMatchers("/admin/**").hasRole("ADMIN");
+                // --------------------------- PRODUCT MANAGEMENT --------------------------------
+                // = ADMIN and EMPLOYEE are only roles with access to /products/** endpoint
+                auth.requestMatchers("products/createProduct", "/updateProduct/{id}", "/deleteProduct/{id}").hasAnyRole("ADMIN", "EMPLOYEE");
 
-                    // = ADMIN and EMPLOYEE are only roles with access to /employee/** endpoint
-                    auth.requestMatchers("/employee/**").hasAnyRole("ADMIN", "EMPLOYEE");
+                // --------------------------- SKILIFT MANAGEMENT --------------------------------
+                // = ADMIN and EMPLOYEE are only roles with access to /skilifts/** endpoint
+                auth.requestMatchers("/skilifts/startLift/", "/skilifts/stopLift/").hasAnyRole("ADMIN", "EMPLOYEE");
 
-                    // = ADMIN, EMPLOYEE and USER are only roles with access to /user/** endpoint
-                    auth.requestMatchers("/user/**").hasAnyRole("ADMIN", "EMPLOYEE", "USER");
-
-                    // --------------------------- PRODUCT MANAGEMENT --------------------------------
-                    // = ADMIN and EMPLOYEE are only roles with access to /products/** endpoint
-                    auth.requestMatchers("products/createProduct", "/updateProduct/{id}", "/deleteProduct/{id}").hasAnyRole("ADMIN", "EMPLOYEE");
-
-                    // --------------------------- SKILIFT MANAGEMENT --------------------------------
-                    // = ADMIN and EMPLOYEE are only roles with access to /skilifts/** endpoint
-                    auth.requestMatchers("/skilifts/startLift/", "/skilifts/stopLift/").hasAnyRole("ADMIN", "EMPLOYEE");
-
-                    auth.anyRequest().authenticated();
-                });
-
-        http.oauth2ResourceServer(oauth2 -> oauth2
+                auth.anyRequest().authenticated();
+            })
+            .oauth2ResourceServer(oauth2 -> oauth2
                 .jwt(jwt -> jwt
-                        .jwtAuthenticationConverter(jwtAuthenticationConverter())));
-        http.sessionManagement(
-                session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-        );
+                    .jwtAuthenticationConverter(jwtAuthenticationConverter())))
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         return http.build();
     }
