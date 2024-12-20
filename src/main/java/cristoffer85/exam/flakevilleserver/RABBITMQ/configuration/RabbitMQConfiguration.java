@@ -10,17 +10,12 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQConfiguration {
 
     @Bean
-    public Queue chatQueue() {
-        return new Queue("chatQueue", false);
-    }
-
-    @Bean
     public RabbitAdmin rabbitAdmin(RabbitTemplate rabbitTemplate) {
         return new RabbitAdmin(rabbitTemplate);
     }
 
     @Bean
-    public Queue declareChatQueue() {
-        return new Queue("chat_Pelle72_Receiver", false);
+    public Queue chatQueue() {
+        return new Queue("chatQueue", false);
     }
 }
