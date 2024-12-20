@@ -33,7 +33,6 @@ public class MessageController {
     @GetMapping("/subscribe/{username}")
     public List<String> getMessages(@PathVariable String username) {
         String queueName = "chat_" + username + "_Receiver";
-        List<String> messages = msgConsumer.getMessages(queueName);
-        return messages;
+        return msgConsumer.getMessages(queueName);
     }
 }

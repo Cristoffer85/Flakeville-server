@@ -23,9 +23,13 @@ public class MsgConsumer {
         String sender = parts[0];
         String receiver = parts[1];
         String msgContent = parts[2];
-        String queueName = "chat_" + receiver + "_Receiver";
-        messages.computeIfAbsent(queueName, k -> new ArrayList<>()).add(sender + ": " + msgContent);
-        System.out.println("Received message for " + queueName + ": " + sender + ": " + msgContent);
+        String senderQueueName = "chat_" + sender + "_Receiver";
+        String receiverQueueName = "chat_" + receiver + "_Receiver";
+
+        messages.computeIfAbsent(senderQueueName, k -> new ArrayList<>()).add("To " + receiver + ": " + msgContent);
+        messages.computeIfAbsent(receiverQueueName, k -> new ArrayList<>()).add("From " + sender + ": " + msgContent);
+
+        System.out.println("Received message for " + receiverQueueName + ": " + sender + ": " + msgContent);
     }
 
     public List<String> getMessages(String queueName) {
