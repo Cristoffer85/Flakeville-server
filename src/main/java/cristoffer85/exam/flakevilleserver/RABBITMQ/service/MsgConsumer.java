@@ -16,20 +16,19 @@ public class MsgConsumer {
     @RabbitListener(queues = "chatQueue")
     public void receiveMessage(String message) {
         String[] parts = message.split(":");
-        if (parts.length < 2) {
+        if (parts.length < 3) {
             System.out.println("Invalid message format: " + message);
             return;
         }
-        String queueName = "chat_" + parts[0] + "_Receiver";
-        messages.computeIfAbsent(queueName, k -> new ArrayList<>()).add(message);
-        System.out.println("Received message from " + queueName + ": " + message);
+        String sender = parts[0];
+        String receiver = parts[1];
+        String msgContent = parts[2];
+        String queueName = "chat_" + receiver + "_Receiver";
+        messages.computeIfAbsent(queueName, k -> new ArrayList<>()).add(sender + ": " + msgContent);
+        System.out.println("Received message for " + queueName + ": " + sender + ": " + msgContent);
     }
 
     public List<String> getMessages(String queueName) {
         return messages.getOrDefault(queueName, new ArrayList<>());
-    }
-
-    public void clearMessages(String queueName) {
-        messages.remove(queueName);
     }
 }
