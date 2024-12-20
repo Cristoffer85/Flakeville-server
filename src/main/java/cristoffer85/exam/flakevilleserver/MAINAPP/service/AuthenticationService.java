@@ -52,27 +52,23 @@ public class AuthenticationService {                // Class that handles Regist
     private EmployeeRepository employeeRepository;
 
     public User registerUser(String username, String password) {
-        try {
-            String encodedPassword = passwordEncoder.encode(password);
-            Role userRole = roleRepository.findByAuthority("USER")
-                    .orElseThrow(() -> new RuntimeException("USER role not found"));
-
-            Set<Role> authorities = new HashSet<>();
-            authorities.add(userRole);
-
-            User newUser = new User();
-            newUser.setUsername(username);
-            newUser.setPassword(encodedPassword);
-            newUser.setAuthorities(authorities);
-
-            String userId = UUID.randomUUID().toString();
-            newUser.setId(userId);
-
-            return userRepository.save(newUser);
-
-        } catch (DataIntegrityViolationException e) {
+        if (userRepository.findByUsername(username).isPresent()) {
             throw new RuntimeException("Username '" + username + "' already exists. Please choose a different username.");
         }
+
+        String encodedPassword = passwordEncoder.encode(password);
+        Role userRole = roleRepository.findByAuthority("USER")
+                .orElseThrow(() -> new RuntimeException("USER role not found"));
+
+        Set<Role> authorities = new HashSet<>();
+        authorities.add(userRole);
+
+        User newUser = new User();
+        newUser.setUsername(username);
+        newUser.setPassword(encodedPassword);
+        newUser.setAuthorities(authorities);
+
+        return userRepository.save(newUser);
     }
 
     public Employee registerEmployee(String username, String password, String name, String position) {

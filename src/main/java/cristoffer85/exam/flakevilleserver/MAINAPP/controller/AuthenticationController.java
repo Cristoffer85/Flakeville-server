@@ -23,8 +23,13 @@ public class AuthenticationController {
     private AuthenticationService authenticationService;
 
     @PostMapping("/register")
-    public User registerUser(@RequestBody RegistrationDTO body){
-        return authenticationService.registerUser(body.getUsername(), body.getPassword());
+    public ResponseEntity<?> registerUser(@RequestBody RegistrationDTO body) {
+        try {
+            User user = authenticationService.registerUser(body.getUsername(), body.getPassword());
+            return ResponseEntity.ok(user);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @PostMapping("/login")
