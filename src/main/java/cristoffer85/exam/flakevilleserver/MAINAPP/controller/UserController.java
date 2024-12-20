@@ -1,12 +1,9 @@
 package cristoffer85.exam.flakevilleserver.MAINAPP.controller;
 
-import cristoffer85.exam.flakevilleserver.MAINAPP.dto.SendOnlyUserNameDTO;
 import cristoffer85.exam.flakevilleserver.MAINAPP.dto.UserUpdateDTO;
 import cristoffer85.exam.flakevilleserver.MAINAPP.model.User;
 import cristoffer85.exam.flakevilleserver.MAINAPP.service.UserService;
 import cristoffer85.exam.flakevilleserver.STORE.model.Order;
-
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +14,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
-    @GetMapping("/getAllUserNames")
-    public List<SendOnlyUserNameDTO> getAllUserSummaries() {
-        return userService.getAllUserSummaries();
-    }
 
     @GetMapping("/getOneUser/{username}")
     public User getOneUser(@PathVariable String username) {

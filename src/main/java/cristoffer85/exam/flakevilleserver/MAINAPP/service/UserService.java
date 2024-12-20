@@ -1,13 +1,9 @@
 package cristoffer85.exam.flakevilleserver.MAINAPP.service;
 
-import cristoffer85.exam.flakevilleserver.MAINAPP.dto.SendOnlyUserNameDTO;
 import cristoffer85.exam.flakevilleserver.MAINAPP.dto.UserUpdateDTO;
 import cristoffer85.exam.flakevilleserver.MAINAPP.model.User;
 import cristoffer85.exam.flakevilleserver.MAINAPP.repository.UserRepository;
 import cristoffer85.exam.flakevilleserver.STORE.model.Order;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,12 +13,6 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
-
-    public List<SendOnlyUserNameDTO> getAllUserSummaries() {
-        return userRepository.findAll().stream()
-                .map(user -> new SendOnlyUserNameDTO(user.getUsername()))
-                .collect(Collectors.toList());
-    }
 
     public User getOneUser(String username) {
         return userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
