@@ -18,7 +18,7 @@ public class MessageController {
 
     @PostMapping("/publish")
     public String pushMsgIntoQueue(@RequestBody MsgDto msgDTO) {
-        msgProducer.sendMsg(msgDTO.getMessage());
-        return "Message sent: " + msgDTO.getMessage();
+        msgProducer.sendMsg(msgDTO);
+        return "Message sent from " + msgDTO.getSender() + " to " + msgDTO.getReceiver() + ": " + msgDTO.getMessage();
     }
 }
