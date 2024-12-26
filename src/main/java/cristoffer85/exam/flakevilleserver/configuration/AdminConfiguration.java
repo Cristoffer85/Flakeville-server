@@ -18,6 +18,7 @@ public class AdminConfiguration {               // Class to mainly set up the ad
 
     @Value("${ADMIN_PASSWORD}")
     private String adminPassword;
+    @Value("${ADMIN_PASSWORD2}")
     private String adminPassword2;
 
     @Autowired
