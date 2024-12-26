@@ -6,6 +6,7 @@ import cristoffer85.exam.flakevilleserver.MAINAPP.repository.AdminRepository;
 import cristoffer85.exam.flakevilleserver.MAINAPP.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -15,12 +16,14 @@ import java.util.Set;
 @Component
 public class AdminConfiguration {               // Class to mainly set up the admins = below in the method initializeAdminUser()
 
+    @Value("${ADMIN_PASSWORD}")
+    private String adminPassword;
+    private String adminPassword2;
+
     @Autowired
     private RoleRepository roleRepository;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
-
     @Autowired
     private AdminRepository adminRepository;
 
@@ -53,7 +56,7 @@ public class AdminConfiguration {               // Class to mainly set up the ad
             Admin admin = new Admin();
 
             admin.setUsername("admin");
-            admin.setPassword(passwordEncoder.encode("superadminpassword"));
+            admin.setPassword(passwordEncoder.encode(adminPassword));
 
             admin.setName("Pelle Larsson");
             admin.setPosition("Uber boss no 1");
@@ -66,7 +69,7 @@ public class AdminConfiguration {               // Class to mainly set up the ad
             Admin admin2 = new Admin();
 
             admin2.setUsername("admin2");
-            admin2.setPassword(passwordEncoder.encode("superadminpassword2"));
+            admin2.setPassword(passwordEncoder.encode(adminPassword2));
 
             admin2.setName("Lisa Larsson");
             admin2.setPosition("Uber boss no 2 (no less than Uber Boss 1");
