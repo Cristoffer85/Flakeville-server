@@ -1,6 +1,4 @@
 TODO:
-* Hide Adminpassword (so it wont be pushed up to the repository)
-* Update Spring Security to newer for better security?
 
 
 
@@ -40,3 +38,5 @@ DONE:
   Maybe need to check that over more
 * Plan out what data (and how) shall be taken from the weather API, and how it shall be viewed
 * ReWrite now faulty tests (because refactoring) for some classes and add some more tests for other classes (available and doable Controllers and Services = done)
+* Hide Adminpassword (so it wont be pushed up to the repository)
+* Update Spring Security to newer for better security?
