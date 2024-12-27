@@ -47,36 +47,31 @@ public class AdminConfiguration {               // Class to mainly set up the ad
     }
 
     private void initializeAdminUser() {
-        if (adminRepository.findByUsername("admin").isEmpty()) {
-            Role adminRole = roleRepository.findByAuthority("ADMIN")
-                    .orElseThrow(() -> new RuntimeException("ADMIN role not found"));
-            Set<Role> roles = new HashSet<>();
-
-            // Create a new Admin----------------
-            roles.add(adminRole);
-            Admin admin = new Admin();
-
-            admin.setUsername("admin");
-            admin.setPassword(passwordEncoder.encode(adminPassword));
-
-            admin.setName("Pelle Larsson");
-            admin.setPosition("Uber boss no 1");
-            admin.setAuthorities(roles);
-            adminRepository.save(admin);
-            //----------------------------------
-
-            // Create a new Admin 2 ----------------
-            roles.add(adminRole);
-            Admin admin2 = new Admin();
-
-            admin2.setUsername("admin2");
-            admin2.setPassword(passwordEncoder.encode(adminPassword2));
-
-            admin2.setName("Lisa Larsson");
-            admin2.setPosition("Uber boss no 2 (no less than Uber Boss 1");
-            admin2.setAuthorities(roles);
-            adminRepository.save(admin2);
-            //----------------------------------
-        }
+        Role adminRole = roleRepository.findByAuthority("ADMIN")
+                .orElseThrow(() -> new RuntimeException("ADMIN role not found"));
+        Set<Role> roles = new HashSet<>();
+        roles.add(adminRole);
+    
+        // -- Create or update Admin 1 --
+        Admin admin = adminRepository.findByUsername("admin")
+                .orElse(new Admin());
+        admin.setUsername("admin");
+        admin.setPassword(passwordEncoder.encode(adminPassword));
+        admin.setName("Pelle Larsson");
+        admin.setPosition("Uber boss no 1");
+        admin.setAuthorities(roles);
+        adminRepository.save(admin);
+    
+        // -- Create or update Admin 2 --
+        Admin admin2 = adminRepository.findByUsername("admin2")
+                .orElse(new Admin());
+        admin2.setUsername("admin2");
+        admin2.setPassword(passwordEncoder.encode(adminPassword2));
+        admin2.setName("Lisa Larsson");
+        admin2.setPosition("Uber boss no 2 (no less than Uber Boss 1)");
+        admin2.setAuthorities(roles);
+        adminRepository.save(admin2);
+        //----------------------------------
+        
     }
 }
