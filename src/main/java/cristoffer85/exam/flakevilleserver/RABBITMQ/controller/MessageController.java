@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
 
 import cristoffer85.exam.flakevilleserver.RABBITMQ.dto.MsgDto;
 import cristoffer85.exam.flakevilleserver.RABBITMQ.service.MsgConsumer;
@@ -31,7 +34,10 @@ public class MessageController {
     }
 
     @GetMapping("/subscribe/{username}")
-    public List<String> getMessages(@PathVariable String username) {
+    public List<String> getMessages(@PathVariable String username, @RequestHeader("X-Username") String loggedInUsername) {
+        if (!username.equals(loggedInUsername)) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You can only view your own messages.");
+        }
         String queueName = "chat_" + username + "_Receiver";
         return msgConsumer.getMessages(queueName);
     }
