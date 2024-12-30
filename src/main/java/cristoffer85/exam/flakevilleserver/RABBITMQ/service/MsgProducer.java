@@ -18,7 +18,7 @@ public class MsgProducer {
     private RabbitAdmin rabbitAdmin;
 
     public void sendMsg(MsgDto msgDTO) {
-        String queueName = "chat_" + msgDTO.getReceiver() + "_Receiver";
+        String queueName = "chat_" + msgDTO.getSender() + "_to_" + msgDTO.getReceiver() + "_Receiver";
         Queue queue = new Queue(queueName, false);
         rabbitAdmin.declareQueue(queue);
         String message = msgDTO.getSender() + ":" + msgDTO.getReceiver() + ":" + msgDTO.getMessage();
