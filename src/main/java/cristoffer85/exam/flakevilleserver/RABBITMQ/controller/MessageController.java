@@ -34,15 +34,19 @@ public class MessageController {
     }
 
     @GetMapping("/subscribe/{user1}/{user2}")
-    public List<String> getMessagesBetweenUsers(@PathVariable String user1, @PathVariable String user2, @RequestHeader("X-Username") String loggedInUsername) {
+    public List<String> getMessagesBetweenUsers(
+            @PathVariable String user1, 
+            @PathVariable String user2, 
+            @RequestHeader("X-Username") String loggedInUsername) {
         if (!user1.equals(loggedInUsername) && !user2.equals(loggedInUsername)) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You can only view messages involving yourself.");
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, 
+                "You can only view messages involving yourself.");
         }
-        String queueName1 = "chat_" + user1 + "_to_" + user2 + "_Receiver";
-        String queueName2 = "chat_" + user2 + "_to_" + user1 + "_Receiver";
-        List<String> messages1 = msgConsumer.getMessages(queueName1);
-        List<String> messages2 = msgConsumer.getMessages(queueName2);
-        messages1.addAll(messages2);
-        return messages1;
-    }
+    
+        String queueKey = user1.compareTo(user2) < 0 
+            ? user1 + "_" + user2 
+            : user2 + "_" + user1;
+    
+        return msgConsumer.getMessages(queueKey);
+    }    
 }
