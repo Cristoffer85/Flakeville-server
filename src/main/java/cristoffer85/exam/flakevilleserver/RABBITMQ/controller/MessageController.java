@@ -16,6 +16,7 @@ import cristoffer85.exam.flakevilleserver.RABBITMQ.service.MsgConsumer;
 import cristoffer85.exam.flakevilleserver.RABBITMQ.service.MsgProducer;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/rabbitmq")
@@ -47,6 +48,18 @@ public class MessageController {
             ? user1 + "_" + user2 
             : user2 + "_" + user1;
     
-        return msgConsumer.getMessages(queueKey);
-    }    
+        List<String> messages = msgConsumer.getMessages(queueKey);
+        msgConsumer.markMessagesAsRead(loggedInUsername);
+        return messages;
+    }
+
+    @GetMapping("/unread/{username}")
+    public int getUnreadMessagesCount(@PathVariable String username) {
+        return msgConsumer.getUnreadMessagesCount(username);
+    }
+
+    @GetMapping("/unread/senders/{username}")
+    public Set<String> getUnreadMessagesSenders(@PathVariable String username) {
+        return msgConsumer.getUnreadMessagesSenders(username);
+    }
 }
