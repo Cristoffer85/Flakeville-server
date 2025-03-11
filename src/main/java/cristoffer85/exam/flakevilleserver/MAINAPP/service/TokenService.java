@@ -25,11 +25,19 @@ public class TokenService {             // Class that encodes to JWT (JSON Web T
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(" "));
 
+        // Added: custom variables here
+        boolean isLoggedIn = true;   
+        String username = auth.getName();
+        String role = scope;
+
+        // Added: more claims to the JWT
         JwtClaimsSet claims = JwtClaimsSet.builder()
                 .issuer("self")
                 .issuedAt(now)
-                .subject(auth.getName())
-                .claim("roles", scope)
+                .subject(username)
+                .claim("roles", role)
+                .claim("isLoggedIn", isLoggedIn)
+                .claim("username", username)
                 .build();
 
         return jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();

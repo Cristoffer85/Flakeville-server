@@ -116,7 +116,7 @@ class AuthenticationServiceTest {
         LoginResponseDTO result = authenticationService.loginUser("username", "password");
 
         assertEquals(user, result.getUser());
-        assertEquals("token", result.getJwt());
+        assertEquals("token", result.getToken());
         assertEquals(role, result.getRole());
         verify(userRepository, times(2)).findByUsername(anyString()); // Expect 2 invocations
         verify(tokenService, times(1)).generateJwt(any());
