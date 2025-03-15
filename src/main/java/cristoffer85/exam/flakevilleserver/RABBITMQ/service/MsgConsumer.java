@@ -12,8 +12,7 @@ import java.util.Set;
 @Service
 public class MsgConsumer {
     private final Map<String, List<String>> messages = new ConcurrentHashMap<>();
-    private final Map<String, Integer> unreadMessagesCount = new ConcurrentHashMap<>();
-    private final Map<String, Set<String>> unreadMessagesSenders = new ConcurrentHashMap<>();
+    private final Map<String, Map<String, Integer>> unreadMessagesCountBySender = new ConcurrentHashMap<>();
 
     @RabbitListener(queues = "chatQueue")
     public void receiveMessage(String message) {
@@ -22,9 +21,9 @@ public class MsgConsumer {
             System.out.println("Invalid message format: " + message);
             return;
         }
-        String sender = parts[0];
-        String receiver = parts[1];
-        String msgContent = parts[2];
+        String sender = parts[0].trim();
+        String receiver = parts[1].trim();
+        String msgContent = parts[2].trim();
 
         String queueKey = sender.compareTo(receiver) < 0 
             ? sender + "_" + receiver 
@@ -33,8 +32,9 @@ public class MsgConsumer {
         messages.computeIfAbsent(queueKey, k -> new ArrayList<>())
                 .add(sender + ": " + msgContent);
 
-        unreadMessagesCount.merge(receiver, 1, Integer::sum);
-        unreadMessagesSenders.computeIfAbsent(receiver, k -> ConcurrentHashMap.newKeySet()).add(sender);
+        // Update the per-sender unread count for the receiver:
+        unreadMessagesCountBySender.computeIfAbsent(receiver, k -> new ConcurrentHashMap<>())
+                .merge(sender, 1, Integer::sum);
 
         System.out.println("Received message for " + queueKey + ": " + sender + ": " + msgContent);
     }
@@ -43,16 +43,33 @@ public class MsgConsumer {
         return new ArrayList<>(messages.getOrDefault(queueKey, new ArrayList<>()));
     }
 
+    // Sum all unread messages across all senders for this user.
     public int getUnreadMessagesCount(String username) {
-        return unreadMessagesCount.getOrDefault(username, 0);
+        Map<String, Integer> map = unreadMessagesCountBySender.get(username);
+        if (map == null) return 0;
+        return map.values().stream().mapToInt(Integer::intValue).sum();
     }
 
+    // Return the set of senders who have unread messages.
     public Set<String> getUnreadMessagesSenders(String username) {
-        return unreadMessagesSenders.getOrDefault(username, ConcurrentHashMap.newKeySet());
+        Map<String, Integer> map = unreadMessagesCountBySender.get(username);
+        if (map == null) return ConcurrentHashMap.newKeySet();
+        return map.keySet();
     }
 
-    public void markMessagesAsRead(String username) {
-        unreadMessagesCount.remove(username);
-        unreadMessagesSenders.remove(username);
+    // Mark messages as read only for a specific conversation.
+    public void markMessagesAsRead(String queueKey, String username) {
+        // Extract the other participant from the queueKey.
+        String[] parts = queueKey.split("_");
+        if (parts.length != 2) return;
+        String otherUser = parts[0].equals(username) ? parts[1] : parts[0];
+
+        Map<String, Integer> map = unreadMessagesCountBySender.get(username);
+        if (map != null) {
+            map.remove(otherUser);
+            if (map.isEmpty()) {
+                unreadMessagesCountBySender.remove(username);
+            }
+        }
     }
 }

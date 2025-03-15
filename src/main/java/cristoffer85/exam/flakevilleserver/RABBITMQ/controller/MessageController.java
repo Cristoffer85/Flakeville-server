@@ -52,14 +52,12 @@ public class MessageController {
 
         List<String> messages = msgConsumer.getMessages(queueKey);
         
-        // Only mark messages as read if the flag is true
         if (markAsRead) {
-            msgConsumer.markMessagesAsRead(loggedInUsername);
+            msgConsumer.markMessagesAsRead(queueKey, loggedInUsername);
         }
         
         return messages;
     }
-
 
     @GetMapping("/unread/{username}")
     public int getUnreadMessagesCount(@PathVariable String username) {
