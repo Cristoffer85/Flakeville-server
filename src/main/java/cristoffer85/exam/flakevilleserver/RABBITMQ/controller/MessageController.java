@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.server.ResponseStatusException;
@@ -38,20 +39,27 @@ public class MessageController {
     public List<String> getMessagesBetweenUsers(
             @PathVariable String user1, 
             @PathVariable String user2, 
-            @RequestHeader("X-Username") String loggedInUsername) {
+            @RequestHeader("X-Username") String loggedInUsername,
+            @RequestParam(name = "markAsRead", defaultValue = "true") boolean markAsRead) {
         if (!user1.equals(loggedInUsername) && !user2.equals(loggedInUsername)) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, 
                 "You can only view messages involving yourself.");
         }
-    
+
         String queueKey = user1.compareTo(user2) < 0 
             ? user1 + "_" + user2 
             : user2 + "_" + user1;
-    
+
         List<String> messages = msgConsumer.getMessages(queueKey);
-        msgConsumer.markMessagesAsRead(loggedInUsername);
+        
+        // Only mark messages as read if the flag is true
+        if (markAsRead) {
+            msgConsumer.markMessagesAsRead(loggedInUsername);
+        }
+        
         return messages;
     }
+
 
     @GetMapping("/unread/{username}")
     public int getUnreadMessagesCount(@PathVariable String username) {
