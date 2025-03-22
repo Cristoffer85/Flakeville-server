@@ -30,6 +30,8 @@ public class User implements UserDetails {
     private Date birthday;
     private String address;
 
+    private String budgetId;
+
     private Set<Role> authorities = new HashSet<>();
 
     private List<Order> orders = new ArrayList<>();

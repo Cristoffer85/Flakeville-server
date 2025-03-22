@@ -74,6 +74,10 @@ public class SecurityConfiguration {                    // Class responsible for
                 // = ADMIN and EMPLOYEE are only roles with access to /skilifts/** endpoint
                 auth.requestMatchers("/skilifts/startLift/", "/skilifts/stopLift/").hasAnyRole("ADMIN", "EMPLOYEE");
 
+                // --------------------------- BUDGET MANAGEMENT --------------------------------
+                // Allow only ADMIN, EMPLOYEE, and USER roles to access budget endpoints
+                auth.requestMatchers("/budget/**").hasAnyRole("ADMIN", "EMPLOYEE", "USER");
+
                 auth.anyRequest().authenticated();
             })
             .oauth2ResourceServer(oauth2 -> oauth2
